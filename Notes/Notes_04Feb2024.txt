@@ -1,0 +1,37 @@
+We will start at 11:00 AM
+--------------------------------
+Introduction
+------------------
+Foundation module	- online mode
+Advanced module	- offline mode
+
+Java Full stack development
+Core Java
+Spring modules
+MySQL/Oracle, Mongodb
+
+Module 1-Programming fundamentals	Fundamentals of Programming Using Flowchart and Pseudocode
+Module 1-Programming fundamentals	Software Development Processes and Methodologies
+Module 1-Programming fundamentals	Software Development Processes and Methodologies
+Module 1-Programming fundamentals	Ultimate Java Masterclass
+Module 1-Programming fundamentals	Ebook - Programming fundamentals
+
+----------------------------------------------------
+Session 1: Mathematical Foundations  agenda
+
+This session will be covering the following topics
+in the agenda
+● Number Systems and Set Theory
+● Logic and Boolean Algebra 
+● Exponents and Logarithms 
+● Probability 
+● Differences Between n ,log n and e^n
+
+
+Number Systems
+-----------------------
+I learned numbers in decimal systems.
+
+
+
+
