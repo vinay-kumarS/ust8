@@ -32,6 +32,252 @@ Number Systems
 -----------------------
 I learned numbers in decimal systems.
 
+other number systems?
+	Binary
+	Octal
+	Hexadecimal
+
+Decimal systems range:
+	0,1,2,3,4,5,6,7,8,9
+Binary system range:		Binary digits		(BITs)
+	0,1
+Octal system range:
+	0,1,2,3,4,5,6,7
+Hexa decimal range:
+	0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+
+
+7
+8
+9
+10
+
+
+0
+1
+10
+
+
+5
+6
+7
+10	in octal is equals 8 in decimal
+
+
+7
+8
+9
+A
+B
+C
+D
+E
+F
+10	in hexadecimal is equal to 16 in decimal
+
+--------------------------------------------------------------------------
+
+Why binary is introduced?
+	why computers use binary?
+		they electronic devices
+			use electric input as data
+
+		power supply is ON/OFF
+
+		0 or 1 means power supply is there or not
+
+why octal is introduced?
+	chips/ microprocessors first introduced were 8 bit.
+	imagine, the circuits have 8 lines through which the supply can go.
+
+0	0000 0000			no lines got power
+255	1111 1111			all lines got power
+
+
+0 represenets	0000 0000
+255 represents	1111 1111
+
+
+now you understand why 256 is popular?			0 - 255 possible values
+
+8
+16
+32
+64
+128
+256
+512
+1024
+
+
+16 bit / Hexadecimal
+
+-----------------------------------
+int i=20;		//how much is the capacity of "int" data type?		2 bytes / 4 bytes
+
+		in a 16 bit machines, it is 2 bytes			and in a 32 bit machine it is 4 bytes
+
+A is translated into a number in computer?
+	A = 65
+
+65 is a decimal equivalent of A
+65 in binary??? is 		
+	0000 0000 0100 0001		16 bit representation of A
+
+suppose if it is a 32 bit machine??????
+
+	0000 0000 0000 0000 0000 0000 0100 0001		32 bit representation of A
+
+AB 
+
+
+0000 0000 0100 0001 0000 0000 0100 0010					=	AB
+
+
+0000 0000 0000 0000 0000 0000 0100 0001 0000 0000 0000 0000 0000 0000 0100 0010	=	AB
+
+
+In java,	int is definitely 4 bytes for sure irrespective of any platform.
+
+
+
+8 bit representation 
+16 bit representation?
+
+Character set introduced first was ASCII		is 8 bit.		0 to 255 is possible
+	Amercian Standard Code for Information Interchange
+list some of as
+	0	null
+	1
+	2
+	48	0
+	49	1
+	65	A
+	66	B
+	97	a
+
+	255
+
+------------------------------------
+in ascii encoding character set, there are 256 possible values
+
+they want to have more than 256 characters, they introduced UNICODE (16 bit)	65536 possible values
+
+first 8 bit ie., 0 - 255 are same as ASCII		Unicode first 8 bit is UTF-8	Unicode Text Format 8 bit
+
+Java uses 16 bit unicode format
+
+1 character = 16 bits		2 bytes
+
+in c language every character is 1 byte size
+in java language every character is 2 bytes size		
+
+
+------------------------------------------------------
+Set theory
+----------------
+	Set is a collection of distinct elements
+	
+UNION
+INTERSECT
+MINUS
+	DIFFERENCE
+DIVIDE
+
+Logical Gates
+	NOT
+	AND
+	OR
+	XOR
+	XAND
+
+What is UNIOIN?
+	Combination of all the elements in both the set.
+
+
+
+
+Set A:
+	12,98,76,34,55,22
+
+Set B:
+	98,76,33,22,44,55,66
+
+A Union B:
+---------------
+	12,98,76,33,34,22,55,44,66
+
+the above contains the distinct combination of elements from both A and  B
+
+
+Oracle:
+UNION
+UNION ALL		include duplicates also.
+
+
+------------------------------------------
+Set A:
+	12,98,76,34,55,22
+
+Set B:
+	98,76,33,22,44,55,66
+
+
+INTERSECT A and B:
+----------------------------
+	98,76,22,55
+
+
+when you do problem solving using computers, you write programs, coding,
+
+the algorithm to solve the problem, mostly is around how you solve this as a person.
+
+
+DIFFERENCE:
+--------------------
+
+	Set difference
+		eliminate the common elements and find the remaining elements in the first set.
+	Symmetric difference
+		eliminate the common elements and find the remaining elements from both the sets.
+
+in oracle, we have MINUS
+
+DIVIDE
+----------
+In oracle, DIVIDE produces result in the following way:
+
+CUSTOMER
+PRODUCT
+	we need to find all the customers who have purchases all the products
+
+8/4
+	in 8, how many complete 4s are there???		ans:	2
+
+9/4	2?
+
+3 customers there are 4 products
+
+2 customers purchased all the 4 products
+
+2 is the answer
+--------------------------------------------------
+Logic and Boolean algebra:
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
 
 
 
