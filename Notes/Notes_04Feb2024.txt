@@ -263,6 +263,181 @@ PRODUCT
 2 is the answer
 --------------------------------------------------
 Logic and Boolean algebra:
+---------------------------------------
+	Logical Gates
+		NOT
+		AND
+		OR
+		XOR
+
+
+Truth table of AND operator:
+	If either side of the operator, ie., any of the operands is FALSE, the the AND operator results in FALSE only.
+
+	short cut AND operators which are very smart, it may not wait for 2nd operand, if it can decide from 1st operand itself.
+	
+	FALSE AND FALSE		=	FALSE
+	FALSE AND TRUE		=	FALSE
+	TRUE AND TRUE		=	TRUE
+	TRUE AND FALSE		=	FALSE
+
+Write an algorithm to find if the given input is a palindrome or not.
+
+	a word that is same in forward or backward
+	MALAYALAM	
+		is a palindrome
+
+	ABCDCBA	
+		is a palindrome
+
+	ABCDEDF
+		is not a palindrome
+
+
+
+Algorithm
+	i, j
+	i=0
+	j=len-1
+
+	arr[i] != arr[j]
+		NOT PALINDROME
+		break
+
+
+input from the user,
+	mark=80
+
+EXCELLENT		>=80
+GOOD			>=70
+SATISFACTORY		>=50
+POOR			<50
+----------------------------
+Task:
+Write an algorith to find if 2 input strings are anagrams:
+	if 2 words are made of same set of characters then they are anagrams
+
+	tea
+	eat
+
+	team
+	meat
+
+write the algorithm for this.
+
+check if the length of both strings are not equal, then NOT ANAGRAMS. Skip remaining process in that case.
+Only if the lengths are same, then only
+Sort both of them in alphabetical order
+Check if both are same.
+
+Algorithms must have these properties:
+	FINITE
+	DEFINITE
+	BEST ORDER OF GROWTH	
+	INDEPENDENT OF PROGRAMMING LANGUAGE
+	EFFECTIVENESS
+		is the measure of the process		
+	EFFICIENCY
+		is measure by how it performs
+	Suitable or the best data structure should be used
+
+
+Finite
+-------
+	the algorithm must have finite number of steps
+
+Definite
+-----------
+	2+3	=	5
+	
+
+
+Hackerrank
+	List<Integer> reverse(List<Integer> input)
+	{	
+		//write your code here
+		List<Integer> result=new ArrayList<>();
+		ListIterator it=input.listIterator(input.size());		is capable of moving from first to last and also from last to first
+		moved from first to last
+	/*	while(it.hasNext())
+			it.next();		
+*/
+		at the end of previous while loop, iterator has moved to end
+
+		while(it.hasPrevious())
+		{
+			result.add(it.previous());
+		}
+		return result;
+
+
+	}
+
+The program took more than required time to complete....
+
+performance testing
+code quality 
+	SonarQube
+
+If the list is not sorted, then we cannot do binary searching.
+Binary search is an algorithm which will work on a sorted list.
+
+sum of 2 numbers
+to rocket science
+
+
+data	2 numbers
+algo	adding
+
+class Employee
+{
+	int id;
+	String name;
+	
+	int getId()
+	{
+		return id;
+	}
+}
+
+data members		data structures
+methods			algorithm
+
+SDLC
+--------
+	Software Development Life Cycle
+
+	is a scientifc approach of developing softwares
+
+Rational Corporation (adapted by IBM)
+	Rational Unified Process		
+
+RUP defines SDLC phases into
+	Inception
+	Ellaboration
+	Construction
+	Transition
+
+Inception:
+	Requirements gathering
+Ellaboration:
+	Analysis
+	Design
+Construction:
+	Coding
+	Testing
+Transition:
+	Deployment
+	Maintenance
+
+
+Conception
+	Req gathering
+
+
+
+
+
 
 
 
