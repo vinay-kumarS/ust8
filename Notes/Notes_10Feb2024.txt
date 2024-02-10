@@ -1,0 +1,394 @@
+https://github.com/jagasia/ust8
+------------------------------------------
+Last week we discussed,
+	Number systems
+SDLC
+--------
+	Softward Development Life Cycle
+
+is a scientific / systematic approach of developing software.
+
+List out the phases of SDLC
+
+Ankit Agarwal
+10:06 AM
+Stage 1: Project Planning. ...
+Stage 2: Gathering Requirements & Analysis. ...
+Stage 3: Design. ...
+Stage 4: Coding or Implementation. ...
+Stage 5: Testing. ...
+Stage 6: Deployment. ...
+Stage 7: Maintenance.
+	
+RUP
+	Rational Unified Process
+The RUP initiation, elaboration, construction, and transition phases can all be iterated		
+------------------------------------
+Inception/ Conception
+-----------------------------
+	The customer identifies his need / problem that needs a solution.
+	System analyst understands/ identifies the problem and that the customer needs a solution.
+
+	we are the solutions provider, we already have provided a solution, but still we keep doing research to find better techniques to provide a better solution, periodically.
+
+	If microsoft, waited to produce Windows 10, it would have been failure.
+
+	1990s, they released windows 3
+	what microsoft do?	they keep releasing next versions.
+
+
+Understand the need for a solution.	(Phase 1)
+
+Requirements gathering:
+---------------------------------
+suppose you are going to develop a software for a domain (Banking domain)
+
+You are very good java/ java fullstack technologies. It doesn't mean you can do a better solution/ s/w for Bank
+
+
+what is a domain?
+	
+in which domain, 
+
+the customer is called as Patient?
+	Medical/Hospital
+the customer is called as 
+	Passenger	- Transportation	
+	Tenent	- Real estate
+	Student	- Student
+
+
+
+Banking is a domain
+Credit card industry is a vertical
+
+Product/ Project
+Product is developed first and sold to customers
+Project means, we found a customer and develop the software
+
+
+
+Requirement gathering:
+	appoint a domain expert
+	observation
+	Branstorming
+	storyboarding
+	empathy maps
+	journey maps
+
+	
+All these are based on the 
+	processes involved in the business
+
+Bank has the following processes:
+	Transactions		withdraw/ deposit/ funds transfer
+	Loan
+		apply loan
+		approve/reject loan
+		pay emi
+		make part payment
+		pre-closure
+		
+	account creation
+	address change update		they are able to trace all your address change request.
+
+
+	a customer can have many accounts
+
+	CUSTOMER	-	ACCOUNT		is 1 to M
+
+User story: contains use cases.
+each process may become a use case.
+
+account creation
+withdraw
+deposit
+apply loan
+
+You will record the document as paragraph.
+
+
+OOAD
+
+ANALYSIS:
+-------------------
+Analaysis
+	system analyst will use his team to do a analysis.
+	Feasibility Study
+		is it possible to implement the requirement
+		with the given 
+			cost	(customer side)
+			features	15 
+			time	30
+			resource	20
+		
+		Risk management 
+	
+	important reason for going to spiral approach
+
+	Product Owner
+	Project Owner
+
+SRS document	-	Software/System Requirements Specification
+
+
+every phase in SDLC, has a deliverable to the next phase.
+
+--------------------------------------------------------------
+
+Design phase:
+---------------------
+	blueprint of the project
+	interface design
+	system architecture
+	flow diagram
+
+you can easily understand, if you notice how construction companies work.
+
+19 floors of building construction
+	if customer will come to know only after the construction,
+	then if suppose, customer do not like, what happens?	it is not possible to rework later.
+
+same, applies to software also.
+It takes lot of hard work to complete the project.
+A change in later stage again is going to be difficult.
+
+
+we need diagrams ( as many diagrams) that depict the actual project, how it is going to come in future
+this is very important to 
+	Get the acceptance criteria.
+
+the diagrams that represent the project
+	UML
+
+UML	-	Unified Modeling Language
+
+Use Case Diagram
+Class Diagram
+Object Diagram
+Package Diagram
+Component Diagram
+Deployment Diagram
+Sequence Diagram
+State Machine Diagram
+Activity Diagram
+Interaction Overview Diagram
+
+for drawing use case diagrams?
+	MS Visio
+	Jude
+	Rational Rose	
+
+	online websites that allow us to draw these diagrams.
+
+
+What is an use case diagram?
+	is an implementation of user view.
+
+no technical implementations
+just user's view of understanding.
+
+If you ellaborate an use case, the you will get 
+	Activity diagram	( is like a flow chart )
+
+use case: Withdraw
+	if you ellaborate?
+	
+1) insert atm card
+2) enter pin number
+3) validate pin number
+4) if pass
+	then ask amount
+	validate amount
+		amount is lesser than his account balance
+		amount is lesser than daily limit
+		amount is lesser than the amount available in the machine
+		yes pass
+			remember to collect the cash.
+
+5) if fail?
+	reject the transaction.
+
+
+Class Diagram
+----------------------
+it is already decided, what are the classes to be coded
+what are the properties and methods of a class
+all are clearly mentioned in the class diagram
+
+
+Class
+	1) name of the class
+	2) properties
+	3) methods
+
+-	private
++	public
+#	protected
+~	internal
+
+
+Sequence diagram:
+-------------------------
+	timing, when an object is created and destroyed (life line)
+	when a method of an object calls the method of another / same object
+
+
+If all these 10 diagrams are provided to you,
+	then you will be able to do the coding
+	without even discussing/ clarifying anything
+
+----------------------------------
+Implementation/ Development/ Coding
+-----------------------------------------------------
+the best code/ the quality of the code is determined only based on 
+how exactly you implemented the given DESIGN.
+
+-------------------------------------------------------------------
+Testing
+	what is testing? when it begins?
+
+
+debugging of our code		finding the logical error in the code.	(programmer)
+unit testing			programmer	(but test cases, provided by testing team)
+Verifying the correctness and functionality of code		perfect		
+begins at end of development
+integration testing
+system testing
+
+we got the above random answers.
+
+The testers role begins even before the programmers start coding.
+
+Testers create 
+	test cases for each use cases
+
+for every use case,
+	they may write around 20 test cases
+
+these test cases, (some are kept as hidden) and some sample test cases are provided to the programmers
+
+Requirements testing:
+	whether the requirements are recorded clearly, unambigously and the testability of the requirement.
+	it is the acceptance criteria
+
+
+For every phase in SDLC, there will be a testing phase
+
+Unit testing
+	when you learn java, you also should learn, JUnit
+	every method in java, you write, should be tested with the test cases.
+
+Functional testing 	(unit testing is a type of functional / black box testing)
+
+Sonar Qube
+	code quality
+	declared variables are initialised.		unused variables are removed
+	comments		comments that explain the code are allowed.		java code is commented (is poor). remove them
+	System.out.println		should be replaced by logs.
+	while coding itself, we want to ensure that quality.
+
+
+
+TDD	-	Test Driven Development
+	The programmers are provided with test cases.
+	they should 
+		write code to fail	
+		modify code to pass
+		refactor the code		(modify the structure of the code without changing the logic)
+integration testing
+	units may pass the test
+	but when they interact with eachother they may fail
+	
+
+regression testing?
+	when the programmer, fix the bugs, 
+	after fixing the bugs, the tester will test again.
+	this is regression testing.
+
+Deployment:
+-----------------
+	installation
+	put data on the server
+	final product
+
+is a transition phase
+	the sofware is moved from 
+		development computer to production computer
+
+
+Deployment, now a days, are taken care by software service provider
+deployment team, needs to configure the application
+according to the clients configuration
+
+CONFIGURATION
+	XML configurations
+
+should be text based that do not need recompilation when we modify the file
+
+Maintenance:
+------------------
+why it is very important today, because, today, we are more into selling service than product.
+
+what is the difference between Product and Service?
+
+Airtel
+OnePlus
+
+
+zoho does not sell me a product, they sell service
+
+books.zoho.com
+	is up to date with government norms on
+		GST
+		TDS
+		etc
+
+that means 
+	service is up to date
+i am not buying product
+i am buying service
+
+any change needs to be implemented.
+
+Microsoft Windows
+	there will be time to time bugs are identified
+	and the fixes are sent to us a 
+		Windows update
+	patches
+	updates
+
+--------------------------------------------------------------------
+Project Manager
+Team leader
+
+Full stack
+	Java full stack
+	dotnet full stack
+	MEAN stack		MongoDb	ExpressJs Angular NodeJs
+	MERN stack		MongoDb	ExpressJs ReactJs NodeJs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
