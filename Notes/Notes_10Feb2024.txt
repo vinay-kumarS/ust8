@@ -369,6 +369,23 @@ Full stack
 	MERN stack		MongoDb	ExpressJs ReactJs NodeJs
 
 
+Front-End
+	HTML
+	CSS
+	Javascript
+	
+	Angular / ReactJs
+
+Back-End
+	Spring boot REST API
+	Microservices 
+
+
+AWS
+	we deployed microservices in
+		Elastic beanstalk
+		ECS	
+		EC2
 
 
 
