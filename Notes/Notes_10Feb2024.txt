@@ -368,10 +368,10 @@ Full stack
 	MEAN stack		MongoDb	ExpressJs Angular NodeJs
 	MERN stack		MongoDb	ExpressJs ReactJs NodeJs
 
-
+In java fullstack:
 Front-End
 	HTML
-	CSS
+	CSS / Bootstrap
 	Javascript
 	
 	Angular / ReactJs
