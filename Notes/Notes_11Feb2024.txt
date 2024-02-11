@@ -1,0 +1,405 @@
+https://github.com/jagasia/ust8
+------------------------------------------
+- Understand the fundamentals of programming and problem-solving.
+- Learn the concept of pseudo code and its importance.
+- Explore different types of programming languages and their characteristics.
+- Gain insights into the role of compilers in the programming process.
+- Understand control flow structures and their application.
+- Grasp the concept of functions and their significance in programming.
+----------------------------------------------------
+So far we discussed about
+	Number systems
+	SDLC
+in SDLC,
+	if you take a phase, IMPLEMENTATION/ Coding/ Development
+
+Coding/ Programming
+----------
+Algorithm
+Flow charts
+Pseudo code
+
+Problem solving and Algorithmic thinking.
+------------------------------------------------------------
+How do you search a word in english dictionary
+
+if the word starts with A
+	start searching close to the beginning
+
+if the word starts with M
+	some where from the middle of the dictionary
+
+if the word starts with X or Y or Z
+	start from last page.
+
+
+if you observe this and then you apply this logic in you algorithms
+
+searching
+sorting
+generating fibonacci series
+
+Machine Learning
+Artificial Intelligence
+
+if you solve a problem using
+	path 1
+	path 2
+	path 3
+3 different ways of solving a problem.
+
+path1 and find the efficiency
+	resources
+		time
+		memory
+path2
+	resources
+
+path3
+
+
+path2
+
+searching for a place in google map.
+
+next time, you do similar search.
+	spacial locality
+	temporal locality
+
+---------------------------------------------------
+Writing algorithms
+	problem is complex.
+
+		1) split the problem into smaller problems
+
+How banking process is defined:
+	1) account creating
+		collect the following information from the customer:
+			fname, lname, dob, address, phone
+		validate these information
+		check criteria
+		adding a row in accounts table, you get a generated acnumber as output
+	2) apply loan
+	3) approve / reject loan
+	4) paying emi
+	5) pre closure
+	6) part payment
+	7) change of address
+	8) funds transfer
+
+First thing in algorithmic thinking is
+	to split the complex process into smaller units 	(divide and conquer approach)
+
+	divide and conquer approach
+	greedy approach
+	brute force approach
+
+The brute force approach is a guaranteed way to find the correct solution by listing all the possible candidate solutions for the problem.
+
+coding challenge:
+
+input from the user:
+
+1 0 1
+1 1 0
+1 0 1
+
+look at this input, the input is supposed to be
+1 and 0 in every alternate places.
+but can you see a mistake here?
+	2nd row, 1st digit
+	arr[1][0] is wrong.
+
+now, the challenge is to mention 
+how many data needs to be modified to ensure that
+the set is correct.
+
+my answer would be 1
+means, 1 data needs to be modified.
+
+How do you solve this problem???
+
+brute force will list down all the possible solutions
+and choose the best solution from that 
+-----------------------------------------------
+
+Tower of hanoi
+
+(2 power n)-1
+
+2 power 3 is 8
+8-1 = 7
+
+
+
+chess
+sudoku
+tic tac toe
+cards
+puzzles
+
+these are mind games that involve algorithmic thinking
+
+fitness criteria
+
+knowledge		
+functional ability
+behavior
+
+------------------------
+Pseudo code
+------------------
+is a program
+and there is an unstructured/ unstandard syntax for this language - pseudo code
+
+example:
+
+write a pseudo code to accept to inputs and find the maximum of the two inputs.
+
+------------------------------
+
+1) get inputs
+2) assign values to variable
+3) if conditions
+else
+4) for loops
+5) while, do while loops
+6) sub routines/ functions 
+7) call a function/ sub routines from anywhere
+8) comments also
+
+IF NO1 IS GREATER THAN NO2 THEN PRINT NO1
+ELSE PRINT NO2
+
+FOR I=1 TO 100
+	PRINT I
+END FOR LOOP
+
+WHILE I IS < 100
+	PRINT I
+	INCREMENT I BY 1
+END OF WHILE LOOP
+
+Why syntax are introduced?
+---------------------------------------
+	the programs must follow the syntax, because, compilers can understand your code only if you follow the syntax.
+
+Human being can understand many languages like English.
+But, what is the language understood by machine?
+
+Machine language
+	is binary language.
+
+if you want the machine to perform, then you need to tell in machine language.
+
+it is called as a Low level language.
+
+Types of Programming Languages (15 mins)
+   - Overview of programming language classifications.
+   - Examples of popular programming languages.
+
+What are the types of programming languages?
+	1) low level
+	2) intermediate level
+	3) high level	
+the above classification is based on level.
+
+in other perspectives, how we can classify programming language:
+
+Object Oriented Programming languages
+Scripting languages
+Compiler based vs Interpreter based languages
+Function languages
+Procedural languages
+System languages
+Markup languages
+
+Identify at least 3 programming languages under the following categories:
+1) Procedural language
+	C
+	Fortran
+	Pascal
+2) Scripting language
+	Javascript
+	Php
+	Perl
+3) OOP language
+	Java
+	C++
+	Python
+	Javascript
+4) System programming language
+	Go
+	Rust
+
+------------------------
+Identify the difference between compiler and interpreter based languages:
+
+interpreter		executes line by line
+		runs the code.
+compiler		
+	compiles the source code into byte code. 
+	compiler does not run the code.
+
+compiler based languages, have atleast 2 stages to run a program
+interpreter based languages, run the code directly line by line
+
+HTML is an example for interpreter based language
+	it is executed by the browser
+
+Compiler based:
+	compiler is a TRANSLATOR
+
+some programming languges has compilers 
+	that translates the source code into machine code
+	ex:
+		c, c++
+
+some programming languages has compilers
+	that translates the source code into intermediate code, which is called as byte code/ IL code
+	ex:
+		Java, C#
+
+what is the difference between the above 2?
+	c, c++
+vs
+	java, c#
+
+
+Answer:
+-----------
+c, c++ compilers translate the source code into machine language code.
+
+the machine language is specific to the platform where the program is compiled.
+
+c, c++ language itself is slightly different in different platforms.
+so, 
+	a program compiled in c, c++ in a specific platform, does not run in other platforms.
+
+now, tell me, how compilation happens in java?
+	java compilation process is split into 2 stages.
+	stage 1:	is done by java compiler (javac)
+			translates java code into byte code.
+	stage 2:	is done by java virtual machine
+		at runtime, it is further compiled (again) from byte code into machine language code.
+
+java language is platform independent. But jvm is specific to the platform
+	so jvm translates byte code into machine specific language code.
+	at runtime, who does this translation?
+		it is done by JIT compiler	-	Just In Time compler
+
+
+in c#, the compilation is done in 2 stages
+	csc translates c# code into MSIL code	-	Microsoft Intermediate Language
+	at runtime, MSIL is further translated into machine language code.
+
+
+Compilers activity:
+	what a compiler can do?
+		translation
+		optimise
+		check syntax and give errors
+		(java) check for checked exceptions
+
+------------------------------------------------
+Control Flow in Programming (20 mins)
+   - Explanation of control flow structures: sequential, conditional, and iterative.
+
+any procedural capable language has control flow statements/ structures.
+
+SQL	-	Structured Query Language
+	but sql does not have procedural capabilities
+
+PL/SQL	-	Procedural Language Extension to SQL
+	IF, IF ELSE, IF ELSIF ELSE, LOOP, WHILE, FOR LOOP
+
+-----------
+Sequential
+Conditional
+Iterative
+arrays and collections
+
+the sequence of execution, is usually top to bottow
+and when there are conditional constructs, then  it will branch
+iterative construts are loops.
+
+
+Demo:
+write a program to find if a number is prime or not.
+	what is a prime number?
+		a number that is divisible only by itself or 1
+
+what is the code you write for finding if given input number is prime or not?
+
+<=1	not prime number
+else only i will continue my logic
+
+>1
+	loop from 2 onwards and use it as a denominator for modulo?
+
+x is the input
+	x%2
+	x%3
+
+pseudo code for finding a number is prime or not:
+1) accept input and store it in x
+2) if x <= 1 then print "Non prime number" and stop the program
+3) else, it is understood that x is >=2
+4) loop a variable y from 2 to upto less than x
+	refine this logic, because, if a number is not divisible by its half, then no point in checking it more than half
+
+17
+	17%2		no
+	17%3		no
+	17%4		no
+	17%5		no
+	17%6		no
+	17%7		no
+	17%8		no
+	17%9		no
+	17%10		no
+
+half of 17		17/2=	8
+	if 17 is not divisible by 8, then it is no going to be divisible by anything above 8
+
+	2, 3, 4, 5, ..... 17/2
+
+again refine the process
+
+	if you take the sq root of 17		4
+
+if 17 is not divisible by 4, then definitely it is not going to be divisible by >4
+
+2, 3, 4		is enough to conclude that 17 is a prime or not.
+
+----------------------------------------
+Challenge:
+	accept an input x from the user and display all the prime number upto x
+
+
+100
+	print all prime numbers upto 100
+
+major portion of this problem is to find if a number is prime or not
+	that is already done.
+
+
+can we create a function that checks if a number is prime or not
+	and call the function in a loop
+
+	for i = 2 to x
+		if i is prime, then print
+		else continue
+
+
+
+
+
+
+	
+
+
+
+
+
+
