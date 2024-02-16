@@ -1,0 +1,92 @@
+Assessment planned on Sunday 18-Feb-2024
+How many sections in the assessment:
+	3 sections
+All are MCQ type questions.
+Section 1:
+	Fundamentals
+		include SDLC
+		programming fundamentals
+		
+Section 2:
+	Pseudo code
+
+Section 3:
+	Critical thinking
+	Logical reasoning ability
+
+
+NO NEGATIVE MARKS.
+------------------------------------
+SDLC models
+------------------
+Waterfall model
+V model
+Spiral model
+Iterative model
+Agile model
+Incremental model
+RAD model
+Prototyping model
+Sliced model
+
+Waterfall model
+----------------------
+	is sequential
+
+	only when you have good expertise in this type of project.
+	not flexible	/ rigid
+	high risk
+	no prototyping
+----------------------
+Prototyping
+	means, we provide the user a sample.
+	i) customer may understand the product during trial version
+	ii) customer finds it useful to buy the original version
+	iii) customer understands that he needs
+
+trial/ prototype sample	will not have all functionalities.
+
+	customer is not able to express all his requirements.
+
+Risk factor
+	
+
+
+RAD
+	parallely work on multiple components creating.
+
+
+Agile model
+----------------
+Agile means, quick, swift, fast
+if you want to analyse, design the entire project, it will take time
+
+in agile, 
+	the portions, whichever is analysed, designed are started to move to implementation immediately.
+	
+	it will split the entire project into several smaller units and each units are processed as sprints
+
+Sprint
+	usually	1 or 2 weeks period
+
+Scrum master	
+backlogs are issued to the team member
+morning stand up meet
+	to list out the backlogs 		Product Backlog
+	teams share their learnings and solutions every day.
+
+
+
+Doubt/ Difficulty
+
+To choose the right model
+1) Project size
+2) Project type	(familer/ new)
+3) Risk factor
+4) Customer understanding of their own requirements		(protyping)
+
+
+
+Validation:		Requirements are validated		(choosing the product)
+Verification:	Product is verified			(testing the product)
+
