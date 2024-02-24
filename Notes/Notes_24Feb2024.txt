@@ -1,0 +1,423 @@
+Git
+-----
+What is Git?
+	is a verson control tool
+DevOps
+	Development Operations
+	devops tools
+		git
+		maven
+		jira
+		jenkins
+		
+
+Storage
+version control
+cloud based repository
+collobaration
+tracking changes
+
+git config --global user.name
+git config --global user.email
+
+git config -l		shows all config
+----------------------------
+Github
+GitLab
+BitBucket
+	platforms/portals to work with git and create remote repositories
+	
+What is a repository?
+	local repository
+	remote repository
+
+we can consider one of our "folders" in our system, as a local repository.
+
+git allows us to synchronize this local repository with a remote repository.
+
+sync	
+	upload
+	download
+
+Any cloud platform can provide
+	Storage services
+	Compute services
+	Network services
+
+Git comes under the storage services.
+Git allows us to store our 
+	code
+	files
+	folders
+	libraries
+		in remote repository
+so that your team members can pull them and do changes and push them.
+
+pull
+push
+
+we can maintain multiple branches, hence multiple versions.
+
+What is version management?
+	version?????
+
+When team members contribute to the same project,
+i have done some code.	(my version)
+you have done some code.	(your version)
+
+
+if, a developer, do some change in the existing project,
+after deployment.
+
+it needs re-deployment.
+
+reactjs project to AWS.
+AWS credentials is available with only 1 person.
+so every time, you do changes to the project,
+you cannot ask that deployer (aws) to re deploy.
+
+What we did?
+	we created a CI/CD pipleline (aws code pipeline)
+	git is able to notify when there is a change.
+	everytime, i push changes to git, it creates a re deployment automatically.	
+
+Look at the convenient for the developer,
+everytime, i make changes to my code, 
+i just need to push to git.
+
+how do you check the git version in your system?
+
+Microsoft Windows [Version 10.0.19045.4046]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\rjaga>git --version
+git version 2.35.1.windows.2
+
+C:\Users\rjaga>git version
+git version 2.35.1.windows.2
+
+C:\Users\rjaga>
+-------------------------------
+we will use "git hub" for remote repositories.
+
+Lets create a git repository:
+	local
+	remote
+
+local:	d:\jag\git_batch8
+remote:	https://github.com/jagasia/git_batch8
+
+login to github and create the remote repository
+
+we have created 
+	git_batch8
+https://github.com/jagasia/git_batch8.git
+
+i will upload one text file
+	how?
+
+add the file to local repository.
+i will push the changes to remote.
+
+new repository (first time)
+echo "# git_batch8" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jagasia/git_batch8.git
+git push -u origin main
+
+-----------------
+go to git bash in your local repository location
+	right click your local repository
+		git bash here
+	confirm your location
+		pwd
+present working directory
+
+our local repository has
+	readme.txt
+
+how to push this to remote repository?
+first time:
+	git init
+		this command creates a 
+			.git folder
+		this will create a stage for our git operation
+		
+whatever i add
+	i commit
+	branch
+	merge
+all these are done on the staging directory	.git only
+only when i push these changes from staging moves to remote repo.
+
+git init
+
+how local repository is linked to remote repository
+	git remote add origin https://github.com/jagasia/git_batch8.git
+
+to add files
+	git add .
+---------------------
+git init
+git remote add origin https://github.com/jagasia/git_batch8.git
+git branch -M jag
+git add .
+git commit -m "first commit"
+git push -u origin jag
+
+----------------------------------
+Task:
+	choose one of your folders as local repository.
+	ensure that it is not part of any other repository.
+	create a remote repository in github
+	in your local repository, create one or more files and then
+	push this to remote.
+
+	Share your remote url in the chat window
+
+-------------------------
+first time,
+we used
+git remote add origin https://github.com/jagasia/git_batch8.git
+git branch -M jag
+
+but subsequent times, we do not need to mention the above 2 lines,
+especially when the branch is same.
+
+git status
+	show the status of the repo
+
+Task:
+	each of you already have pushed atleast 1 file.
+	now, create a different branch
+	and push changes to atleast 1 file
+
+	now, checkout as branch1
+	see the file
+	now, checkout as branch2
+	see the file
+
+in windows,
+in github
+------------------
+git branch
+	to see all the available branches
+	and the current branch is highlighted
+
+Question:
+i do a commit at 09:00
+i do a push at 10:00
+
+in my remote repository, which time it will show?
+ans:	the commit time will be reflecting, even though we pushed one hour late.
+
+Whoever has created 2 branches.
+	i) checkout as one branch, and check the file
+	ii) checkout as another branch, and check the file
+
+change detection:
+	red color - implies, it is deleted line(s)
+	green color - implies, it is added line(s)
+
+--------------------------------
+Collobaration
+let us invite 1 or more collaborator for this repository.
+
+you have used one email address while creating github account.
+	kindly share that email address in chat window
+
+i will sent invite to collaborate.
+
+jgabylin@karunya.edu.in
+
+gkavinvelavan@gmail.com
+
+nidhu1909@gmail.com
+
+SAKTHI SIDDHARTH N
+10:09 AM
+sakthisiddu01@gmail.com
+
+Aa
+AARTHI A
+10:10 AM
+aarthipoornimaa512@gmail.com
+
+Ha
+Harijagan T
+10:10 AM
+jaganhari2002@gmail.com
+
+Ch
+Chandrahasreddy S
+10:10 AM
+chandrahasreddy2003@gmail.com
+
+Ra
+Rajeshwari M
+10:10 AM
+rajeshwari-20csa36
+musicsoul12309@gmail.com
+
+
+How to add a collaborator to the git repository?
+	settings	-> Collaborators
+		
+
+in bitbucket, it is 
+	repository permissions
+in github, it is
+	collaborators
+
+----------------------------------------------
+now, the collaborators, can push contents to my repository.
+remember,
+	you create a local repository first.
+identify a folder in your system (which is not part of any other git repository).
+
+either
+i) you can clone my repository		git clone https://....
+	go inside the folder and push changes
+or
+ii) you can pull my repository into your local repository
+---------------------------------
+Now, in our remote repository, some collaborators have done some contributions.
+
+How, will i get those changes in my local repository (windows folder)?
+
+
+-------------------------------------
+Learning git
+	creating local repository
+	creating remote repository
+	creating branches
+	push
+	merge
+	pull
+	checkout
+	delete the branches after merge.
+
+GitLab
+	allows us to create projects
+	create milestones
+	create backlogs/issues (tasks)
+	assign tasks to members
+	and update the status
+
+	code repository (git)
+	
+team members push their branches
+
+rest api
+	entity		(employee, department)
+	repo
+	service
+	controller
+
+Employee
+	id
+	name
+	department		
+
+i am dependent on other member who create Department
+
+i will merge his department with my branch
+
+now, i will get
+Employee
+Department
+
+Jira
+	project
+	team members
+	link to gitlab/github/bitbucket
+
+--------------------------------
+CI/CD
+	Jenkins
+	aws code pipeline
+
+Demo:
+	to witness, how git is going to redeploy our changes in our project in cloud using CI/CD
+
+1) create a reactjs project in
+	d:\jag\cicd\
+	npx create-react-app kavin
+
+2) cd kavin
+	npm start
+-----------
+3) in aws, elastic beanstalk
+	we create an application "kavin"
+		kavin.ap-south-1.elasticbeanstalk.com
+	this is showing sample application by aws.
+-------------
+4) we will create a ci/cd pipleline
+	in aws, it is code pipeline
+
+before that, we need a git url....
+	https://github.com/jagasia/kavin.git
+
+we push the contents of kavin folder to this remote repository
+
+Steps for creating the pipeline
+stage 1:	source		git
+stage 2: 	build		skip
+stage 3:	deploy		elastic beanstalk
+
+we have created a pipeline, that pulls the project from github and deploy it in aws elastic beanstalk.
+
+-------------------------------
+When i do some changes in my code, 
+i will push the changes to git.
+immediately, it should create a trigger and redeploy it in aws.
+
+-----------------------
+Jenkins
+	to run a program from git.
+	why? why do you want your code in git, to execute.
+	advantage is,
+		whenever you change the code and push to git,
+	it should reflect in next execution.
+otherwise,
+	your code is pulled by somebody and they run the code.
+	if you modify the code, then you need to notify them.
+	instead, "git" is in the middle.
+
+	you push code to git.
+	they run code pulled from git.
+
+	Instead of you doing the pull and run,
+	jenkins can do that.
+
+
+a simple java hello world program, i will run using jenkins.
+the code is pulled by jenkins from git.
+
+1) created a git hub repository
+	abylin
+2) create a folder "abylin"
+	D:\Jag\cicd\abylin
+3) in local repository, create a hello world program:
+	App.java
+public class App
+{
+	public static void main(String []args)
+	{
+		System.out.println("Hello Jag");
+	}
+}
+
+4) push this to git
+	git init
+	git add .
+	git commit -m "first
+	git branch -M jag
+	git remote add origin https://github.com/jagasia/abylin.git
+	git push -u origin jag
+
+running jenkins is very simple:
+download jenkins.war
