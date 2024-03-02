@@ -1,0 +1,319 @@
+Live Session: Java-Intermediate
+----------------------------------------------
+Arrays
+Strings
+	String
+	StringBuilder
+	StringBuffer	(sync)
+
+
+
+Challenge:
+Accept 2 String inputs from the user, and check if they are anagrams or not.
+Print "Anagrams" if yes, else print "Not Anagrams" as output.
+
+Hint:
+	Anagrams are words that are formed using same set of characters.
+	in this challenge, both strings must be same length and the number of occurrence of characters must be 	same.
+
+==
+equals()
+
+==
+	compares the value of the operands only when the operands are value types
+		a==b
+			if a and b are value types, then their values are compared
+
+		a==b		
+			if a and b are reference types, then their references are compared
+
+
+
+import java.util.*;
+
+public class example {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+
+
+String str1 = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+String str2 = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+
+char[] charArray1 = str1.toCharArray();
+char[] charArray2 = str2.toCharArray();
+
+Arrays.sort(charArray1);
+Arrays.sort(charArray2);
+
+if (Arrays.equals(charArray1, charArray2)) {
+System.out.println("Anagram");
+} else {
+System.out.println("Not an anagram");
+}
+
+}
+}
+
+--------------------------------------------------------
+Palindrome:
+-----------------
+What is a palindrome?
+	any string while read from left to right, 
+	is same while reading from right to left.
+
+Malayalam
+madam
+mom
+dad
+
+Last time, for anagrams, we used sorting.
+this time, like Rajeshwari told, we use "reverse" 
+
+reverse method is not available in String.
+
+StringBuilder
+	reverse()
+
+package com.ust.demo;
+
+import java.util.Scanner;
+
+public class PalindromeDemo {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String inputStr=sc.next();
+		//since reverse method is not present in String class,
+		//we use StringBuilder
+		StringBuilder sb=new StringBuilder(inputStr);
+//		sb.append(input);
+		sb.reverse();
+		String reverseStr=sb.toString();
+		if(inputStr.equalsIgnoreCase(reverseStr))
+		{
+			System.out.println("Palindrome");
+		}else
+		{
+			System.out.println("Not Palindrome");
+		}
+	}
+
+}
+
+----------------------------------------------------
+Debugging:
+----------------
+	Bugs can be logical errors also.
+	We take logical errors only for debugging.	Because, syntax errors, does not allow compilation, so safe.
+	Runtime errors, we need to handle using try-catch-finally or throws clause.
+
+	Logical errors, needs debugging.
+
+
+Debugging in Eclipse/ STS IDE:
+	we can mark the "Break Points" in the start line from where we want to start debugging.
+
+
+
+Demo:
+	write a java code to printing the following pattern
+
+input: 5
+
+*
+* *
+* * *
+* * * *
+* * * * *
+
+-------------------------------
+Breakpoint
+	Double click the left margin of the line from where do you want to start debugging.
+	While debugging the code (remember, not running the code, but debugging the code).
+		right click code -> (instead of Run As, choose "Debug As" java application)
+
+	while debugging, 
+		the program proceeds and pause at "Break point".
+		then IDE suggests you to change to "Debug Perspective"
+
+	now, program pause in break point.
+	we are going to move one by one.
+
+Step Into
+	this will move to next statement.
+	if that statement is a method call, then debugging proceeds inside that method and continue.
+
+Step Over
+	this will move to next statement
+	if that statement is a method call, then that method is completed (not showing us inside the method)
+	so, we will be in the same level of method and move statement by statement.
+
+Step Return:
+	this will immediately complete the execution of current method and return to the calling method.
+
+During this process, did you notice the "Variables" window.
+	this will show the values of the variables in the current scope.	
+	highlights the variable whose value changed now.
+
+
+
+
+
+				*
+			*	*	*
+		*	*	*	*	*
+	*	*	*	*	*	*	*
+*	*	*	*	*	*	*	*	*
+
+package com.ust.demo;
+
+import java.util.Scanner;
+
+public class PatternPrintingApp {
+
+	public static void main(String[] args) {	
+		Scanner sc=new Scanner(System.in);
+		int input=sc.nextInt();
+		
+
+			for(int i=0;i<input;i++)
+			{
+				for(int k=0;k<input-1;k++)
+				{
+					System.out.print("\t");					
+				}
+				
+				
+				for(int j=0;j<=i;j++)
+				{
+					System.out.print("*\t");
+				}
+				System.out.println();
+			}
+		
+
+	}
+
+}
+
+--------------------------------------------------------
+Window Sliding Technique:
+https://www.geeksforgeeks.org/window-sliding-technique/
+
+
+Finding Prime number
+	for(int i=2;i<=input;i++)
+	{
+		if(input%i==0)
+		{
+			return false;
+		}
+	}
+	return true;
+
+
+
+
+
+	for(int i=2;i<=input;i++)		also produces same result
+	for(int i=2;i<=input/2;i++)		also produces same result
+	for(int i=2;i<=Math.sqrt(input);i++)	also produces same result
+
+
+Nested For Loop
+Recursion			means, a function calling to itself
+	these are approaches which may perform poorly.	
+	Time complexity
+
+2 pointer technique
+	binary search
+
+left	right
+
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+
+1 to 15 comparison
+average 7-8 comparisons
+
+binary search
+
+1,15		8 > 7	now search right
+
+8, 15		8 < 12	now search left
+
+8, 11		8 < 10	new search left
+
+8, 10		8 < 9	new search left
+
+8, 9		8 = 8	found
+
+
+https://www.geeksforgeeks.org/java-program-for-two-pointers-technique/
+--------------------------------------------------------
+https://www.baeldung.com/java-counting-sort
+------------------------------------------------
+
+Superset
+Subset
+
+1,1,2,3,8,17,90,19,22,44,32,33,56
+
+in the above list
+	can you tell me the longest running even number sequence?	3
+	what is the starting index of that sequence			8
+
+
+Run Length IV
+ -------------------
+Write a program to find the length of the longest running sequence of even numbers in the given array. Also find the starting index of the longest running sequence of even numbers.
+ 
+Example :
+ 
+Consider the array ... { 2, 16, 15, 2, 6, 8, 10, 7, 22, 4 , 6}
+ 
+The 3 even number sequences in this array are {2, 16}, {2, 6, 8, 10} and {22, 4, 6}.
+The longest running even number sequence is {2, 6, 8, 10}
+The length of the longest running even number sequence is 4 and the starting index is 3.
+ 
+Note:
+The array indexing starts from 0.
+If there are multiple choices, select the choice where the starting index is minimum.
+ 
+Input and Output Format:
+ 
+The first line of the input consists of an integer n that corresponds to the number of elements in the array. The next 'n' lines of input consists of a single integer that correspond to the elements in the array.
+ 
+The first line of the output consists of the length of the longest running even number sequence and the second line of the output consists of the starting index of the longest running even number sequence.
+ 
+Sample Input :
+11
+2
+16
+15
+2
+6
+8
+10
+7
+22
+4
+6
+ 
+Sample Output :
+4
+3
+
+------------------------------------
+Hint:
+How do you find max number of given 3 numbers?
+keep a "max" variable and update whenever current element is greater than "max"/
+
+Similarly, update the maxSequence and whenever maxSequence is updated, update the start index in a variable called startIndex.
+
+
+
+
+
+
+
+

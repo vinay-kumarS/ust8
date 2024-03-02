@@ -6,6 +6,7 @@ public class StringDemo1 {
 		String str1="hello";
 		str1="world";	
 		System.out.println(str1);
+		
 	}
 
 }
