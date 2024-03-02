@@ -1,0 +1,483 @@
+Java Fundamentals
+----------------------------
+10 am - 12 noon
+----------------------
+5 minutes to start.
+
+introduction to java and upto Strings
+
+Java as language.
+	3 editions:
+		Java Standard edition
+		Java Enterprise edition
+		Java Micro edition
+Java SE		till jdk 1.4, it was J2SE, then from java 5 it is Java 			SE		
+
+Java SE is also called as "Core Java".
+
+All other editions are above this layer called "core java".
+POJO
+	Plain Old Java Objects
+java ee 
+	servlets
+		is not a POJO class
+	spring mvc
+		we will have controller which are POJO
+
+POJO
+	a simple java class
+	that does not inherit any other class (other than Object)
+	that does not implement any interface
+	that does not oblige to override anything
+	that does not oblige to handle any exception
+
+You cannot run even a hello world program in java without a class.
+
+Java as a language
+	when introduced 1995
+	James Gosling and his team at "Sun Microsystem"
+	aimed to introduce a new language that
+		does not have the problems that c++ had.
+		c, c++ syntax was retained in Java language
+		but lot of issues were resolved.
+
+		Platform independant
+			we can run in (any) platform like
+				Mac OS, Windows, Linux
+		Only the platforms for which Java Runtime is available, those platforms allow running java 
+	
+Java is adopted by Oracle corporation 
+
+int marks=100;	//c, c++, Java, 
+
+if(marks)	//possible in c, c++ but not in Java, (boolean expression)
+{
+	//true
+}else
+{
+	//false
+}
+
+
+1) memory leaks addressed in java
+	in c, c++ the pointers can access adjacent memories using pointer arithmetic
+	ptr++		will shift to next memory
+	now, in java, pointer arithmetic is not possible	
+		arrays may sound like allowing this. but it is not allowed beyond the size of array
+
+	char name[10];	//c/ c++ syntax
+		//tell me how many characters are allowed in the 		above array?
+	A char array of size 10 is meant for 9 characters. and 1 space is for \n 	null terminator
+	but in reality i am able to store any number of characters in this char array of size 10.	PROBLEM
+
+2) data types 
+	8 data types in java
+	int 4 bytes	in any platform
+
+
+How java is platform independant?
+	independant means, the code we write is not specific to one platform.
+	write / code once.
+	run in any platform (supported without changing source)
+
+Compilation process:		(makes it platform independant)
+	Source code => Byte code
+	Byte code => Machine code
+	Machine code runs.
+
+Before java,
+	the c, c++ compilation process was like
+		source code => machine language code
+	this compilation is called translation
+	done by "compiler"
+	
+	problem is:
+		in my computer, i do project in c language.
+		i compile it.
+		I go to client, run this compiled code,
+		it does not run.
+		Because, my computer and client's computer are different platforms.		OS may different. Processor is diff.
+		So you can compile your code in client's computer?		yes. But source code itself is different in different platform, in C, C++
+	#include<conio.h>	this works in some platform, not all.
+		will not work in linux 
+	int 	is 2 bytes? or 4 bytes?	
+
+Java language is same for any of the platforms where java is supported.
+
+source code is same.
+After compilation, we do not get machine language code.
+because, machine language is different for different platforms.
+
+so we will get a byte code when compiling java code.
+this byte code is "further compiled" again at runtime.
+that is done by platform specific JRE.
+
+JDK vs JRE vs JVM
+
+JDK
+	Java Development Kit
+while downloading java,
+	which one should i download?
+		JDK or JRE?
+
+JDK is for developers who	
+	compile
+	run
+
+JRE is for the clients
+	there is no compiler in jre
+
+javac is to compile	(jdk has this javac and also java)
+java is to run	(jre has only java and not javac)
+
+JVM is a part of JRE
+JRE is a part of JDK also	and JRE can exist alone 
+
+Java Runtime Environment
+	Runway is required for flights to take off / land
+	Runtime is required for our program to run
+Storage
+Compute		provide runtime environment for running code
+Network
+
+if JRE is not there, no java program can run.
+
+JDK has JRE and tools
+JRE has JVM
+JVM has class loader, garbage collector, etc
+
+JVM is a process
+	class loader
+	garbage collector	
+		these are threads inside the process.
+--------------------------------------
+data types in java:
+	8 data types
+char		2 bytes size		'a'	'\0'	'\n'
+
+byte		1 byte size
+short		2 bytes size
+int		4 bytes size
+long		8 bytes size
+
+float		4 bytes size
+double		8 bytes size
+
+boolean		1 bit size		possible values are 		true 	false
+
+
+data type vs type
+any primitive/ fundamental/ value type is DATA TYPE
+
+Types are reference types
+Data types are value types
+
+value type vs ref type
+-----------------------------
+swap(int *i, int *j)
+	you are passing values or reference??????	ans: REF
+
+swap(&a,&b)	you are passing the ref of a and b. Not values
+
+Java does not support pointers.
+	int *a;	//is not possible in java
+
+Java has some support to pointers using Reference types.
+
+primitives are always passed by value.
+objects are always passed by reference.
+
+challenge
+------------
+public void swap(int x, int y)
+{
+	//write your code here
+}
+
+how do you swap the actual parameters?
+
+scanf("%d",&x);		here, x is passed by reference.
+
+in java
+the 8 data types are value types.
+
+What is a value type?
+	if you go to the memory location of the variable and check
+	what you see is, a value.
+
+What is a reference type?
+	if you go to the memory location of the variable and check
+	what you see is, a reference to another memory.
+
+memory locations, assume like locker room.
+	lockers are labled with variable name
+
+int x=20;		//x is the lable over a locker.
+		
+if you open the locker, what do you see?
+	you see:	20
+
+Date dt=new Date();
+	//dt is the lable over a locker.
+if you open the locker, what do you see?
+	you see:	not a value, but reference to another location
+
+Stack
+Heap
+
+
+Stack
+	is Last In First Out		LIFO
+	push and pop
+
+any variable, declared in a function/method 
+	is in stack.
+because, 
+	main function is called first
+	from main, i call fn1()
+	from fn1() i call fn2()
+	
+	which function end first????
+		fn2()
+	next?
+		fn1()
+	next?
+		main()
+
+	last in first out....
+
+that is why, functions are in call stack.
+	any variables declared inside function
+	are in Stack.
+
+public static void main(String []args)
+{	
+	int i=20;
+	Date dt=new Date();
+	new Scanner();
+	Date dt2;		
+}
+variables
+	i
+	dt
+	dt2		stack is allocated. Heap is not allocated. So if you open locker dt2, there is null.
+both are in Stack memory.
+but values?
+	20 is inside the stack locker labeled as "i"
+	new Date() is an object it is stored in "Heap" and its reference is stored in the stack locker labled as "dt"
+	new Scanner() is an object it is stored in "Heap" and its reference is not stored in stack.
+
+Steps for coding:
+	first choose one folder where you create the programs.
+	D:\Jag\UST\Batch8_Feb2024\Java
+
+	create a file with extension .java
+		App.java
+
+
+public class App
+{
+	public static void main(String []args)
+	{
+		System.out.println("Hello world");
+	}
+}
+
+
+How to compile and run a java program?
+javac App.java
+java App
+
+
+
+Setup java in our system:
+1) download JDK 17
+	install
+after installation, default location
+	C:\Program Files\Java\jdk-17
+
+2) environment variables
+	JAVA_HOME		C:\Program Files\Java\jdk-17
+	PATH			%JAVA_HOME%\bin
+
+3) open a new cmd prompt		(if already cmd is open, it will not know new installations)
+	java -version
+
+Eclipse/ STS/ IntelliJ IDE
+then why do we need to know compiling and running java in cmd?
+
+sometimes, you get a EC2 (Elastic Compute Cloud) instance in AWS,
+then you will get only cmd prompt to do everything
+
+jenkins.jar
+	java -jar jenkins.jar
+
+we have now, run a hello world.
+
+what is command line argument?
+public class App
+{
+	public static void main(String []args)
+	{		
+		System.out.print("Hello ");
+		for(String arg : args)
+		{
+			System.out.print(arg+" ");
+		}
+	}
+}
+
+--------------------------------
+IDE stands for Integrated Development Environment
+	examples:
+		Visual Studio Code
+		Eclipse
+		IntelliJ
+		Netbeans
+		SpringToolSuite	for eclipse/ vs code
+
+what is the need for IDE?
+	IDEs provide 
+		Language support
+			autocompletion, error notification
+		Debugging support
+		Running support
+		Build support		jar/war/ear
+		Export/ Import 
+		Plugins installation
+
+Spring Tool Suite		for eclipse
+-------------------------
+1) download sts for eclipse
+	you get .jar file
+	run this file	(double click)
+	it will create a folder
+
+2) inside the folder
+	SpringToolSuite4.exe
+
+	create a shortcut in desktop		right click	-> Send to -> Desktop (shortcut)
+	drag the shortcut to task bar 	(pin to taskbar)
+
+3) when you open STS
+	it ask you to choose the workspace.
+
+	you choose a folder in your system as a "workspace"
+
+4) Any time, you can choose different workspace
+	File -> Workspace -> Switch to other
+
+Steps to create a java project:
+----------------------------------------
+File -> New -> Java Project
+
+com.ust.demo
+org.prograd.demo
+
+first part of the package
+	com
+	org
+
+second part 
+	company name
+
+thir part
+	project name
+
+com.ust.hrms
+-------------------------------
+Arrays
+String
+----------
+
+Array
+	is a collection of elements of same data type/ type.
+	elements are present in the in contiguous memory locations.
+	they can be accessed directly using index	(indices)
+	fixed size. Can we resize an array?	resizing is recreating. We loose elements while doing that.
+
+Arrays can be
+	primitive data types (or)
+	reference types also.
+	
+	single dimension 	(or)
+	multi dimension
+
+	jagged
+
+What is a jagged array?
+	means, each dimension can be variable length.
+	if you consider it as row column, then
+		each row can be of different columns length
+
+int i=20;
+Employee e;		//is incomplete
+e=new Employee();		//is complete
+
+Employee e1=new Employee()	//complete
+
+int arr[]=new int[10];		//sytax of arrays in java
+
+int arr[10];		//this is c, c++ syntax		this is not correct in JAVA
+
+
+int marks1[]= {90,89,79};
+int marks2[]=new int[10];
+int []marks3=new int[20];
+		
+
+int marks4[];
+int len=20;
+marks4=new int[len];
+
+
+package com.ust.demo;
+
+import java.util.Date;
+
+public class App2 {
+
+	public static void main(String[] args) {
+		Date arr[]=new Date[10];
+		//we have create 10 null objects here
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[0]=new Date();		
+		}
+	}
+
+}
+
+-------------------------------------
+String
+	is immutable? How? Why?
+
+
+
+
+		String str1="hello";		//a heap memory is alloced and "hello" is stored there
+		str1="world";		//a new heap memory is allocated and "world" is stored there
+		System.out.println(str1);	
+
+Note:
+	we have created 2 objects		"hello" and another one is "world"
+	both are different heap memory locations.
+
+	str1 is same stack memory location where, the reference was earlier pointing to "hello" and now to "world"
+
+If you think "hello" is a value, 
+	values which are stored in stack are value types.
+	
+
+You want same memory location where only the content should change,
+	StringBuilder
+	StringBuffer
+
+		provides methods to
+			insert
+			replace
+			delete
+
+	StringBuilder	faster and not thread safe
+	StringBuffer	is synchronized (means, one thread is allowed to access at a time)
+
