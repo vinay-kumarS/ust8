@@ -1,0 +1,172 @@
+Live Session: Java-Live Solving Practice 
+-----------------------------------------------------
+Part I: Basic Java Problems
+-------------------------------------
+	i can conduct Poll with one question and 4 options
+
+Part 2: Arrays Problems
+---------------------------------
+	Code based 
+	practical
+
+Part 3: String Proble
+----------------------------
+	Code based 
+	practical
+
+----------------------------------------
+A) A call to instance method can not be made from static context.
+B) A call to static method can  be  made from non static context
+
+
+static context
+	static block
+	static method
+	static variable	(ignore)
+
+static block is very early.
+	static block is executed first and then only first line of main method is executed.
+static method
+	can be called even without any object of the class
+	can be called even before any object of the class is created.
+		in that case, how can this static method call an instance method??????????
+		an instance method is available when an instance (object) is available 
+
+
+public class App
+{
+	static 
+	{
+		System.out.println("Static block is executed");
+	}
+	public static void method1()
+	{
+		System.out.println("static method is called");
+		method2();
+//App.java:10: error: non-static method method2() cannot be referenced from a static context
+//                method2();
+
+	}
+	public void method2()
+	{
+		System.out.println("Instance method is called");
+	}
+	public static void main(String []args)	
+	{
+		System.out.println("First line of main method");
+		method1();
+		App a=new App();
+
+	}
+}
+----------------
+That question based on method overloading (function overloading)
+multiple methods are allowed to have same name but different signature.
+	signature is 
+		number of arguments
+		data type of arguments
+		order of the type of arguments
+
+		return type can be same or different, but that does not matter.
+		if return type is the only difference, then it is not allowed.
+
+-----------------------------------
+class Order{
+Order(){
+System.out.println(""Cat"");
+}
+public static void main(String... Args){
+System.out.println(""Ant"");
+}
+static{
+System.out.println(""Dog"");
+}
+{
+System.out.println(""Man"");
+}}
+
+
+kindly ignore double double quotes.
+
+since we have not created any instance (object) of the class, 
+	instance block does not execute		(so no "Man")
+	constructor is not executed		(so no "Cat")
+
+
+static block first
+	so, 	"Dog"
+	main method 1st line  "Ant"
+
+
+
+
+class Test
+{ 
+	private void display(){		//non-static 
+		System.out.println("Display()");
+	}
+
+	private static  void show() { 
+		display();			//compilation error
+		System.out.println("show()");
+	}
+	
+	public static void main(String arg[]){
+		show();
+	}
+}
+
+------------------------------------------------------------
+What will be the output of following code? 
+
+import java.util.*; 
+class I 
+{
+    public static void main (String[] args) 
+    {
+        Object i = new ArrayList().iterator(); 
+        System.out.print((i instanceof List)+","); 		false
+        System.out.print((i instanceof Iterator)+","); 		true
+        System.out.print(i instanceof ListIterator); 		false
+    } 
+}
+----------------------------------------------------------------
+
+Unique Product of digits in an array
+
+Shwetha bought an array and she thought to reduce it. Instead of simply rejecting the numbers she decided to find the unique product of digits in it. Product of digits is found by multiplying each of the digits of the given numbers in the array. After finding the products, the unique product values are counted. Given an array of integers of length N, write a program to check the number of unique digits in it .
+
+Input format:
+First input is an integer that denotes the N value, size of the array. 1<=N<=100.
+Second line of the input is a series of integers separated by a space that denotes the array values.
+
+Output format:
+Output is an integer that denotes the number of unique product of digits in the input array..
+
+Sample Input 1:
+6
+2 8 121 43 222 29
+Sample Output 1:
+4
+
+Explanation:
+For a = [2, 8, 121, 43, 222, 29], the output should be
+uniqueDigitProducts(a) = 4.
+
+Here are the products of the array's elements:
+
+    2: product(2) = 2;
+    8: product(8) = 8;
+    121: product(121) = 1 * 2 * 1 = 2;
+    43: product(42) = 4 * 3 = 12;
+    222: product(222) = 2 * 2 * 2 = 8;
+    29: product(23) = 2 * 9 = 18.
+
+As you can see, there are only 4 different products: 2,8 ,12 and 18.
+
+Sample Input 2:
+5
+3 4 1 5 2
+Sample Output 2:
+5 
+
