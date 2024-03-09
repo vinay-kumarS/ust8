@@ -404,5 +404,16 @@ After repeated concatenation, the string becomes "AmphibianAmphibianAmphibianAmp
 The character at 25 th index is 'a'. 
 
 
+index ranges from 
+0...8
+
+if index is 9, it is translated to 0
+how?
+9 % length
+9%9	0
+10%9	1
+
+simple. Find the length modulo, input 2
+
 
 
