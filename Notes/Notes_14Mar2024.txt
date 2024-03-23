@@ -1,0 +1,77 @@
+Doubt Resolution Session – Module 2 – Batch 8
+----------------------------------------------------------------
+Git
+Github
+CI/CD
+
+Can one of you unmute and share the topics/ sub topics you learned / came across 
+while learning module 2
+
+lets list out the details and share the concepts that may be useful for your assessments.
+
+Dockers
+
+Deployment
+	moving our project from development machine to client's production machine.
+	challenges we face during deployment
+
+Virtualization
+	Virtual PC
+	Remote Desktop
+	VMWare
+
+	drawback:
+		heavy weight.
+		in your operating system (windows), we can run a virtual machine called Linux.
+		
+Containerization
+	instead of having a virtual pc,
+	Why not only package the necessary components to run a project alone.
+	
+	a container, will contain, all that is necessary to run a project
+		OS features
+		runtime env
+		system files
+		memory to reserve
+
+	everything.
+	containerization is a light weight version of virtualization
+
+Docker
+	imagine, if you create a docker image of your project,
+	then you can run this image in any computer, where docker is only installed. No need to install anything
+
+	while running a Docker image, 
+	a Docker container is created
+
+	this container, is like a virtual machine. that contains everything that needed to run a project.
+
+
+
+in AWS,
+	ECR	-	Elastic Container Registry		similar to docker hub, by AWS
+	ECS	-	Elastic Container Service		runs docker images as containers
+
+
+if you run docker image, you will get docker container.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

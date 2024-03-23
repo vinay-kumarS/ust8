@@ -1,0 +1,136 @@
+Live Session: Introduction to OOP
+-------------------------------------------------
+a.	Classes and Objects
+b.	Constructors and its types
+c.	Polymorphism
+d.	Inheritance
+e.	Packages
+f.	Access Modifier
+
+---------------------------------------------------------
+Class
+--------
+	what is the need for class?
+		class is a template for creating objects.
+		class is a blueprint for objects.
+		algorithm & datastructures
+		contains data members and methods
+these answers, define a class.
+
+but, 
+understand those days, when 
+C language was popular,
+how, C++ was introduced?
+	c plus classes
+
+in main method, i can do anything.
+so why class?
+
+class 
+	boxes or wraps, the data members and methods so that it is portable or reusable or self contained
+
+class Player			//football
+{
+	jerseyNo
+	name
+	teamNo
+	role
+
+		kick()
+		run()
+		block()
+}
+
+If you can represent anythings in this world
+as an object in your program,
+then you can control that anything
+
+there is a projector
+if you are able to represent that projector
+as an object in memory,
+you will be able to call its methods
+	switchOn
+	switchOff
+	
+there is a file in your computer.
+	if you can represent it as an object
+	you can 
+		read
+		write
+	anything you can do on the file.
+
+my code is scattared 
+	lot of global variables
+	methods/functions
+
+it is unmanageable when the complexity of the project increases.
+
+
+class is a wrapper that wraps
+	data members		(variable/ constants)
+	methods
+
+
+Java language, does not allow you to run any code
+without a class.
+
+Object
+-----------
+	what is an object?
+		Object is an instance of the class.
+
+How can we create an object?
+	using "new" operator, we can create a class.
+
+
+new Employee();		//this is an object of Employee
+	//what happens here?		A heap memory is allocated.
+	//this heap memory is allocated, but its reference is not stored in stack memory....
+
+Employee raja;	//what i have done???		I have created a reference variable of Employee type
+		//		raja is not an object of Employee, at this point of time.....
+
+
+Employee raja = new Employee();	//here, we have created an object of Employee and its reference is kept in 				stack variable "raja". It is stack variable, if it is created in any method
+
+What is the need for constructor?
+	is needed to create object of a class.
+	you cannot create an object of a class, without constructor.
+	constructors are also used to inject the dependent values
+
+
+		Employee raja=new Employee(121, "Raja", "Sivakumar", "CSE");
+		System.out.println(raja);
+
+equals
+	method?
+
+==	vs	equals()
+
+== checks if the values are equal, when used with "value" types
+== checks if the references are equal, when used with "reference" types
+
+Employee raja=....
+Employee ravi=....
+
+raja==ravi		is going to check if both references are equal. So we don't use this
+
+raja.equals(ravi)	is going to check if their values are equal. But which values?	associateIds are equal????
+		or names are equal???
+		we need to decide that. So we need to override, the equals methods.
+
+
+
+Object 
+	is the super class for any class
+	equals method is part of Object
+		its default behavior is working
+
+
+
+
+
+
+
+
+
