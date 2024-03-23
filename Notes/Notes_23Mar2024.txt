@@ -126,6 +126,7 @@ Object
 	equals method is part of Object
 		its default behavior is working
 
+---------------------------------
 
 
 
