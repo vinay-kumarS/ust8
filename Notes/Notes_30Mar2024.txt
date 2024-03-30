@@ -1,0 +1,376 @@
+Live Session: DeepDive to OOP
+Part 1 :Introduction(40 minues)(each of the following should be explained with live code)
+a. Types of Inheritance
+b. Inheritance vs Polymorphism
+c. Generics
+d. ArrayList basic
+e. Custom ArrayList
+Pause: take a break for 5 minutes
+Part 2: Continuation to OOPs concepts(45 minutes) )(each of the following should be explained with live code)
+a. Lambda Expressions
+b. Collections Framework
+c. Annotation
+d. Object class
+-------------------------------------------------------------------------
+Types of Inheritance.
+-----------------------------
+Single
+Multiple
+Multi level
+Hybrid
+
+in Java, we have single inheritance. And any inheritance supports multi level. Level can be restricted by using "final" classes in java. Sealed in c#
+
+what is final?
+Taneshwara	(not responding)
+
+final
+	a data member declared as "final" will become a constant. We can initialise this data member. But cannot 	change its value or reference later.
+
+	a method declared as "final" will become a final method, which cannot be overridden.
+
+	a class declared as "final" will become a final class, which cannot be inherited. It cannot become super 	class. If a class becomes, final. Then there is no sub class for that class. Then no overriding also for the 		methods. All methods in a final class, is assumed as final methods (is it not)
+
+Polymorphism
+	in inheritance, there is a sub class that inherits super class. Hence, overriding is introduced.
+	Using overriding, we can exihibit "dynamic" polymorphism.
+	Late binding
+
+Polymorphism can be exihibited using inheritance.
+	Person raja;
+	raja=new Programmer();
+	raja=new Developer();
+
+see, raja behaves as a programmer. Later he behaves as developer.
+This polymorphism is because of inheritance
+
+class Person
+{}
+
+class Programmer extends Person
+{}
+
+class Developer extends Person
+{}
+
+---------------------------------------------
+Collections Framework
+--------------------------------
+	Collection of objects
+	List
+	Set
+	Map
+		ArrayList, Vector, LinkedList
+		Generics
+
+Limitations / disadvantages of Arrays. 
+	elements are placed in memory in contigeous locations
+	not dynamic. it cannot grow or reduce the number of elements in an array.
+	fixed length.
+	size should be known in the beginning
+	memory wastage
+	insert/delete involves re-arranging the elements
+	
+Java collections api, provides us with some data structures, that have advantages over arrays.
+
+These collection classes, can be classified as
+List
+Set
+
+Map is application of collection
+
+List and Set are interfaces, implemented by collection classes.
+
+
+List
+	ArrayList
+	LinkedList
+	Vector
+Set
+	HashSet
+	TreeSet
+	LinkedHashSet
+
+Map
+	HashMap
+	TreeMap
+	LinkedHashMap
+
+
+List vs Set
+--------------
+	List allows duplicate. Set rejects duplicates
+	List is ordered. Set has specific order (based on the type of Set). Set does not store elements in random 	order. 
+		HashSet:	order is based on hashCode and equals methods
+		TreeSet:	order is based on comparable/ comparator		Sorted
+		LinkedHashSet:	order is based on the order in which elements are added.
+		Difference between LinkedHashSet and List is LinkedHashSet rejects duplicates.
+	List
+		always the elements are added at the end of the list
+		can be sorted
+	Set
+		does not allow sorting later. While adding the element, TreeSet keeps sorted manner.
+	
+Iterator
+	next()	
+	hasNext()
+	remove()
+
+what this means, an iterator, can move in forward direction only.
+	
+what if i want to traverse in reverse direction??????
+	there is another type of iterator:
+
+ListIterator
+	next()	
+	hasNext()
+	remove()
+	previous()
+	hasPrevious()	
+NOTE:
+	ListIterator does not work with Set
+
+ex:
+	List<Integer> removeDuplicates(List<Integer> input)
+	{
+		//write your code here
+		// 1) add these inputs to a Set, then set will reject duplicates and convert set to list
+		//LinkedHashSet<Integer> temp=new LinkedHashSet<>(input);	
+		//List<Integer> output=new ArrayList<>(temp);
+		//we lost the order. if order is wrong, hackerrank says 0 marks.
+	}
+
+
+
+89
+29
+15
+100
+45
+63
+
+
+TreeSet
+15
+29
+45
+63
+89
+100
+
+				89
+			29		100
+		15		45
+					63
+
+In a Set, when an element is added, it does not necessarily added at the end.
+in a set, after the elements are added, it cannot be sorted.
+
+Arrays.sort(arr);		for arrays
+Collections.sort(list);		for lists		NOT for SETs
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class App {
+
+	public static void main(String[] args) {
+		List<Integer> marks=new ArrayList<>();
+		marks.add(50);
+		marks.add(150);
+		marks.add(510);
+		marks.add(501);
+		marks.add(45);
+		marks.add(54);
+		marks.add(80);
+		marks.add(70);
+		marks.add(90);
+		marks.add(10);
+		
+		Collections.sort(marks);
+		
+		System.out.println(marks);
+	}
+
+}
+
+//List supports Collections.sort
+
+
+
+Traverse a list in reverse order. It is different from descending order.
+
+order is different from sorting.
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.ListIterator;
+
+public class App {
+
+	public static void main(String[] args) {
+		List<Integer> marks=new ArrayList<>();
+		marks.add(50);
+		marks.add(150);
+		marks.add(510);
+		marks.add(501);
+		marks.add(45);
+		marks.add(54);
+		marks.add(80);
+		marks.add(70);
+		marks.add(90);
+		marks.add(10);
+
+//		System.out.println(marks.get(1));
+		
+//		Collections.sort(marks);
+		
+//		System.out.println(marks);
+		ListIterator<Integer> it = marks.listIterator(marks.size());
+//		while(it.hasNext())
+//		{
+//			System.out.println(it.next());
+//		}
+		System.out.println(".............");
+		while(it.hasPrevious())
+		{
+			System.out.println(it.previous());
+		}
+	}
+
+}
+
+
+
+ListIterator does not work with Set
+--------------------------------------------------
+
+
+TreeSet implements NavigableSet
+NavigableSet extends SortedSet
+
+
+---------------------------------------------------
+Map
+	key - value pair
+
+put			put(key,value)
+get			get(key)
+
+key is a Set
+key does not allow duplicates.
+in a map, the key is a set. But if you enter duplicate key, what happens?????
+
+
+Set
+	rejects duplicates
+
+Map
+	value is updated when duplicate key is provided
+
+
+Challenge:
+-----------------
+Accept an input string from the user, and display the characters in the input with its occurrence.
+
+sample input:
+this sentence is typed by me
+
+sample output:
+t	3
+h	1
+i	2
+s	3
+	5
+e	5
+n	2
+c	1
+y	2
+p	1
+d	1
+b	1
+m	1
+
+Hint:
+	iterate each character of the input string.
+	add these characters as key of the map
+	if key already exists, then increase the count
+
+	map.put(k,v);		if k is already found, then v is updated there.
+				if k is not found, then v is put there.
+	map.get(k)	returns v
+
+	LinkedHashMap
+
+
+Collections support Wrappers and objects 
+not primitives
+
+List<Integer> is allowed but	List<int> is not allowed
+
+arrays can be primitive types. But collections cannot be.
+
+
+sdf.parse		to convert String to Date
+sdf.format		to convert Date to String
+
+how to get weekday from a date?????
+
+30-Mar-2024		output should be "Saturday"
+-------------------------------------
+
+Sorting and TreeSet
+
+Comparable vs Comparator
+
+Comparator is for custom.
+
+What we are sorting, is an entity / Type.
+
+List<Integer> list
+
+Collections.sort(list)
+
+list is of Integer type.
+
+If type itself defines the order, then it is using Comparable.
+
+but if we introduce external comparator, then we use Comparator.
+
+challenge:
+	how will you sort a list of integers in descending order?
+
+List<College> list=new ArrayList<>();
+
+Collections.sort(list);		//what does sort do?????????
+	if you cannot compare 2 entities, then you cannot sort them.
+
+
+Comparable
+
+class College implements Comparable<College>		///when type class itself implements
+	compareTo(College c)
+		//compare their startingDate		
+class CollegeComparator implements Comparator<College>	////this is external class that defines how 2 colleges are compared.
+
+
+sort colleges by name 
+sort colleges by location
+sort colleges by number of dept
+
+for each of these, we can create a comparator class.
+
+Java Mock 39 MobileBrand - Requirement 5
+	sorting using comparable and comparator
+
+Java Mock 27 Music Aggregator - Requirement 2
+	sorting using comparable and comparator
+
+String str1, str2;
+
+str1.compareTo(str2);			-1 	0	1
+
+str1-str2			

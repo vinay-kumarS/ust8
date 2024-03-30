@@ -127,11 +127,469 @@ Object
 		its default behavior is working
 
 ---------------------------------
+Polymorphism:
+----------------------
+in C language, we cannot do the following:
+	int sum(int i, int j);
+	int sum(int i, float f);		//not allowed in c language
+
+in c language, we are not allowed to create multiple functions with same name.
+
+in C++, it is allowed.
+	this type of multiple functions having same name
+	is called as function/ method overloading
+
+
+sum(2,3);			//what is the output?
+sum("Ram","Kumar");	//what is the output?
+
+if 	sum("Ram","Kumar"); 	becomes		"RamKumar"
+then	sum(2,3)		should become		23
+
+if numbers are passed as arguments, then it is adding them
+if Strings are passed as arguments, then it is concatenating them
+
+Based on the arguments, the behavior is different.
+Task:
+-------
+create a class called "Furniture"
+	it should have 
+		String name
+		String color
+	it should have methods:
+		acceptDetails
+		displayDetails
+write appropriate code to get input and output
+-------------------------------------
+create a class "Chair" that inherites "Furniture"
+	it should have 
+		int noOfLegs
+	override the 
+		acceptDetails
+		displayDetails
+
+
+create a class "BookShelf" that inherits "Furniture"
+	it should have
+		int noOfShelves
+
+	override the
+		acceptDetails
+		displayDetails
 
 
 
+Furniture f=null;
+f=new Chair();
+
+
+f=new BookShelf();
+
+this is dynamic polymorphism.....
+
+
+Employee raja;		//joins the organisation
+
+raja=new Programmer();
+
+raja=new Developer();
+
+raja=new ProjectManager();
+
+can you see raja behaves differently in different phase of his career.
+his roles are different, he performs them differently.
+
+polymorphism
+
+
+Static polymorphism:
+	is resolved at compilation time
+	method overloading
+	constructor overloading
+	in java, we cannot do operator overloading. But some operators are already overloaded in java itself
+		+
+		==
+	
+Dynamic polymorphism:
+	is resolved at run time
+	overriding			
+
+
+Difference between overloading and overriding:
+-----------------------------------------------------------------
+
+Overloading:
+	same method name
+	but different signature
+		signature:
+			number of arguments
+			type of arguments
+			order of type of arguments
+			(return type does not matter. Can be same / different)
+
+Overriding:
+	sub class method and super class method have same signature.
+	sub class is re-defining the super class method
+
+	the rules of overriding:
+	-------------------------------
+	1) signatures of sub class method must be same as super class method
+	2) sub class method cannot reduce the visibility of the super class method
+		public > protected > default > private
+	if super class method is public, then sub class method cannot be lesser other than public
+	if super class method is protected, then sub class method can be public/ protected
+	3) sub class method cannot be declareed to throw new exceptions (throws)
+
+
+	@Override annotation makes it very strict. even covariant types are not allowed.
+
+Packages:
+	group the classes and interfaces
+
+when a class is mapped to a file, the package is mapped to a folder.
+
+every package has a folder.
+
+package scope means,
+	default scope.
+	no access specifier.
+
+Access specifiers:
+public > protected > default > private
+
+	public
+		members of a class are
+		accessible from anywhere.		same class, same package, different package
+
+	protected
+		members of a class are3
+		accessible from same class
+			from same package
+			from sub classes of any package
+
+	default
+		accessible from same package only
+
+	private
+		accessible from same class only
+
+Encapsulation:
+--------------------
+	what is encapsulation?
+		wrapping the data members and methods inside a type.
+		it is also called boxing
+		covering
+		protecting
+
+making the data members as non-public
+and providing access to them using setters and getters
+
+Abstraction
+	is providing access to essential features
+	public methods
 
 
 
+Instead of furniture example,
+look at this example:
 
+class Shape
+{}
+
+
+class Triangle extends Shape
+{}
+
+class Rectangle extends Shape
+{}
+
+class Circle extends Shape
+{}
+
+
+observation:
+
+Shape is required for dynamic polymorphism
+
+since, Shape do not have formula for calculateArea,
+it became abstract method.
+
+Hence, Shape class became abstract class.
+
+Interface?
+	similarities between interface and abstract class	
+		both can have abstract methods
+	difference
+		interface can not be equal to abstract class
+		class can be inherited by a class
+		interface can be inherited by another interface only
+
+	interface provides a commitment to implement certain functionality
+
+Interfaces in java 8 onwards:
+	can have methods with body (if the method is static / default)
+	can have constants and not variable.
+	can have only public members
+
+
+Adapters:
+-------------
+when interfaces are compared to plug points.	
+	in some countries, the plug points are different.	instead of round, they are flat.
+	so we need adapters to convert them.
+
+	An interface may have for example, 7 abstract methods.
+	when a class implements that interface, it is forced to implement all 7 abstract methods.
+
+	if there is an adapter class, then that class implements (empty implementation) of those 7 methods.
+	now, we inherit, that adapter class so that we can override the methods of our choice.
+
+
+interface MyInterface
+{
+	void one();
+	void two();
+	void three();
+	void four();
+}
+
+class MyAdapter implements MyInterface
+{
+	void one(){}
+	void two(){}
+	void three(){}
+	void four(){}
+}
+
+class MyClass extends MyAdapter
+{
+	void three()
+	{
+	}
+}
+
+WebSecurityConfigurerAdapter
+WebSecurityConfigurer		is an interface
+
+
+static:
+	static data member
+	static method
+	static block
+-----------------------
+Types of inheritance
+	single
+	multi level
+	hierarchical
+	multiple
+	hybrid
+
+Java supports
+	Single inheritance
+	Multi level
+	
+
+java does not support multiple inheritance	
+	multiple means, multiple super class.		THAT IS NOT ALLOWED in java
+
+
+A class having multiple sub classes is always allowed.		IT IS NOT TO BE CONFUSED WITH MULTIPLE
+
+Multi level
+	a sub class has sub class
+
+A
+	B
+		C
+			D
+
+if inheritance is allowed,
+	then multi-level and multiple sub classes are always allowed.
+
+Hybrid:
+	is multiple inheritance
+	if multiple inheritance is allowed, then definitely it is hybrid.
+
+in java, it is very clear.
+	A class cannot have 2 super classes.
+
+Multiple Inheritance using interface in java:	(how)
+------------------------------------------------------------
+
+
+Cannot reduce the visibility of the inherited method from A
+
+
+interface Person
+{
+	void speak();
+	default void walk()
+	{
+		System.out.println("Person walks");
+	}
+	
+	static void run()
+	{
+		System.out.println("Person runs");
+	}
+	
+}
+
+
+java 8 onwards,
+	interfaces can have methods with body, if the method is "static" or "default"
+	
+Collections:
+------------------
+in Collections API
+can you tell me some classes?
+
+the interfaces
+	List
+	Set
+	Map			is not a collection. but application of collection
+
+List interface implemented by
+	LinkedList
+	ArrayList
+	Vector			is a legacy class. 	(synchronized)
+
+Set interface implemented by
+	HashSet
+	TreeSet
+	LinkedHashSet
+
+Map interface implemented by
+	HashMap
+	TreeMap
+	LinkedHashMap
+	Hashtable			is a legacy class	(sychronized)
+
+HashMap vs Hashtable
+
+Iterator
+ListIterator
+
+
+Generics
+	mention type using <?>
+
+	List is non generic
+	List<T> is generic
+
+Before jdk 1.5, there were no generics.
+	
+import java.util.ArrayList;
+import java.util.Date;
+
+public class App {
+
+	public static void main(String[] args) {
+		ArrayList countries=new ArrayList();
+		countries.add("India");
+		countries.add(new Integer(10));
+		countries.add(new Date());
+		countries.add(new Boolean(false));
+		
+		//here, the arraylist allows us to add only Object types.
+		
+//		all these classes, String, Integer, Date, Boolean are sub classes of Object
+		//so, it is only 1 type which is Object type.
+		
+		
+	}
+
+}
+
+
+from jdk 1.5 onwards, generics are introduced
+import java.util.ArrayList;
+
+public class App {
+	public static void main(String[] args) {
+		ArrayList<String> countries=new ArrayList<>();
+		countries.add("India");
+		countries.add(20);	//ERROR
+		countries.add(new Date());	//ERROR
+		
+	}
+}
+
+
+while creating ArrayList class, they did not create it for 1 type (Object).
+They made it generic type so that you are allowed to choose any type while instantiating this class.
+
+You should be able to create your own generic type class.
+
+<T>
+
+Generics are type safe collections.
+
+
+What is lamdba?
+	introduced in java 8 to provide quick implementation of a Functional Interface
+
+what is a functional interface?
+	an interface that contains only 1 abstract method is a functional interface
+what is a marker interface?
+	an interface that does not have any abstract method is a marker interface
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class IntegerReverseComparator implements Comparator<Integer>
+{
+
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		return o2.compareTo(o1);
+	}
+	
+}
+
+public class App {
+
+	public static void main(String[] args) {
+		ArrayList<Integer> marks=new ArrayList();
+		marks.add(90);
+		marks.add(60);
+		marks.add(94);
+		marks.add(54);
+		marks.add(45);
+		marks.add(76);
+		marks.add(56);
+		marks.add(69);
+		marks.add(96);
+		marks.add(89);
+		marks.add(91);
+		marks.add(78);
+		marks.add(34);
+		marks.add(45);
+		
+//		Collections.sort(marks, new IntegerReverseComparator());
+		Collections.sort(marks, (o1,o2)->o2.compareTo(o1));
+		
+		System.out.println(marks);
+	}
+
+}
+
+
+@Override
+@Entity
+@Deprecated
+
+How to create your own annotations?
+
+@Interface
+
+target
+retention
+
+You should be able to use "reflection"
+to write program to read metadata of a class
+
+can you list all the methods present in a class by code at runtime.
+read the annotation and its values
 
