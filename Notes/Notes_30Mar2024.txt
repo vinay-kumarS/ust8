@@ -374,3 +374,184 @@ String str1, str2;
 str1.compareTo(str2);			-1 	0	1
 
 str1-str2			
+------------------------------------------------------
+Generics
+
+before jdk 1.5		upto jdk 1.4
+all collection classes were of object type only.
+
+from jdk 1.5 onwards,
+	Collection classes became generics.
+	it is not meant only for object type, but allows us to specify the type when we instantiate the collection
+	they are called as "Type safe" collections.
+
+<T>
+-----------------------------------------------------
+Lambda
+	what is lambda
+		lambda is used to provide quick implementation of a functional interface
+
+(a,b)->b-a
+
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class App6 {
+
+	public static void main(String[] args) {
+		List<Integer> marks=Arrays.asList(15,25,17,8,90,78,87,68,55);
+//		Collections.sort(marks, Collections.reverseOrder());
+		Collections.sort(marks, new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				// TODO Auto-generated method stub
+				return o2-o1;
+			}
+		});
+
+		//Collections.sort(marks, (a,b)->b-a);
+		System.out.println(marks);
+		
+	}
+
+}
+
+Functional interface
+	Comparator		compare(a,b)
+	Runnable			run()
+	Predicate			test(t)
+	
+Marker interface		interface with 0 abstract method
+	Serializable
+
+
+Stream API
+----------------
+	Stream API is used to work with collections.
+	Stream API is read only, it can produce new streams which are manipulated version of another stream
+	
+	is similar to SELECT query in RDBMS
+
+	what do you do in SELECT
+		Select fields
+		filter rows	
+		sort by field(s)
+		group by aggregation
+	
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class App8 {
+
+	public static void main(String[] args) {
+		List<Employee> empList=new ArrayList<>();
+		empList.add(new Employee(10, "Raj", "Kumar", "ECE", 10000.0));
+		empList.add(new Employee(9, "Siva", "Kumar", "EEE", 20000.0));
+		empList.add(new Employee(11, "Raja", "Siva Kumar", "ECE", 10000.0));
+		empList.add(new Employee(5, "Abdul", "Kader", "ECE", 30000.0));
+		empList.add(new Employee(4, "Abdul", "Raheem", "EEE", 10000.0));
+		empList.add(new Employee(9, "John", "Abraham", "CSE", 30000.0));
+		empList.add(new Employee(8, "Dinesh", "Varadarajan", "CSE", 10000.0));
+		empList.add(new Employee(12, "Dinesh", "Srinivasan", "IT", 30000.0));
+		empList.add(new Employee(7, "Suresh", "Peters", "IT", 10000.0));
+		empList.add(new Employee(6, "Suresh", "Kumar", "CSE", 30000.0));
+		
+		//Display the Departments and the sum of salaries of the employee dept wise
+	}
+
+}
+
+
+check shared notes and solve this problem.
+
+		//Display the Departments and the sum of salaries of the employee dept wise
+		//Display the Departments and the average of salaries of the employee dept wise
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class App8 {
+
+	public static void main(String[] args) {
+		List<Employee> empList=new ArrayList<>();
+		empList.add(new Employee(10, "Raj", "Kumar", "ECE", 10000.0));
+		empList.add(new Employee(9, "Siva", "Kumar", "EEE", 20000.0));
+		empList.add(new Employee(11, "Raja", "Siva Kumar", "ECE", 10000.0));
+		empList.add(new Employee(5, "Abdul", "Kader", "ECE", 30000.0));
+		empList.add(new Employee(4, "Abdul", "Raheem", "EEE", 10000.0));
+		empList.add(new Employee(9, "John", "Abraham", "CSE", 30000.0));
+		empList.add(new Employee(8, "Dinesh", "Varadarajan", "CSE", 10000.0));
+		empList.add(new Employee(12, "Dinesh", "Srinivasan", "IT", 30000.0));
+		empList.add(new Employee(7, "Suresh", "Peters", "IT", 10000.0));
+		empList.add(new Employee(6, "Suresh", "Kumar", "CSE", 30000.0));
+		
+		//Display the Departments and the sum of salaries of the employee dept wise
+//		Map<String, Long> map = empList.stream()
+//		.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting()));
+//		
+		Map<String, Double> map = empList.stream()
+		.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
+		
+		for(Entry<String, Double> entry: map.entrySet())
+			System.out.println(entry.getKey()+"\t"+entry.getValue());
+	}
+
+}
+
+//		single line comment
+/*	*/	multi line comment
+
+---------------------------------
+Annotations
+	what is annotation?
+		is like comment. Then what is the difference between comment and annotation?
+		comments are ignored by the compiler.
+		annotations can be present in compiled code also.	Not always. It is based on the annotation's retention policy
+		some annotations are present in		
+			compile
+			runtime
+			source code
+
+annotations are the methods of providing metadata.
+	metadata explains 
+	annotations explains that is this field/ method / constructor/ class 
+do
+
+when we create annotations, we need to specify the target.
+
+target can be 
+	field
+	method
+	cons
+	class
+	
+then this annotation is allowed to be used on those target only.
+
+example, @Override annotation cannot be used on a class.
+
+public String method1(@Valid Employee emp)
+	//here, @Valid annotation is used on a parameter of a method.
+
+public String method2(@RequestBody Employee emp)
+
+You can create your own annotation
+and use them on some targets.
+
+What is the benefit?
+	these annotations can be read by programs at runtime and decide.
+
+Reflection
+	is the ability to read metadata.
+
