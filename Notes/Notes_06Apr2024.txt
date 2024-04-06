@@ -1,0 +1,286 @@
+Abhinand Arun
+Thaneswara P	responds in chat. But what is the answer for my question?
+Vinay Satrasala	responds in chat. But what is the answer for my question?
+Live Session: Exception Handling(Total length: 2 hours)
+----------------------------------------------------------------------------
+in the beginning of 1st session, 
+we would like to hear from the participants about
+	what topics were learnt in self paced learning
+	what videos watched in LMS
+	what exercises done
+	doubts
+	difficulty areas
+
+
+at the end of the 2nd session,
+we would like to 
+	set the plan for next week
+	topics to be learnt
+------------------------------------
+Part 1:Error and Exceptions(1 hour )
+
+What are exceptions? Difference between error and exceptions with code demo
+
+Types of exceptions
+
+Exception handling: try, catch , throw , throws and finally keywords
+
+Blanket exceptions
+Break: 5 minutes
+Part 2: Customised exception(35 minutes)
+
+With running live code create 2 new exceptions
+
+Throw and handle newly created exceptions
+Part 3: In session practice(20 minutes)
+
+Use 10 short sample codes for exception handling practice and concept clarity
+-----------------------------------------------
+Exceptions
+-----------------
+	What is Exception?
+		is any abnormal event that might occur during the execution of program.
+		you dont know how to handle. then you raise / throw exception.
+		The program will terminate abruptly when an exception occurred but not handled.
+		abrupt termination saves the program from continuing abnormally.
+	
+
+Java bean
+	any reusable piece of code in java is java bean.
+	components created in java are called as java beans.
+
+What is the need for exception?
+	is to define what are all abnormal. what are all unexpected.
+	some abnormal events:
+		dateOfBirth is future date
+		expiryDate is past date
+		price is negative
+		
+Sakthi	is creating a java bean. 	Bank is the bean that contains methods like withdraw
+	sakthi knows that withdraw amount cannot exceed 30k, it it is > 30K it is not acceptable
+	ok, what to do in that case???????
+	Sakthi cannot decide what to do. The user (Nidharsana) has to decide. 
+Nidharsana
+	is using that java bean.
+	gets an exception while passing amount >30k
+	what she can do?
+		she can handle the exception.
+
+
+java language itself has lot of classes and they have lot of methods.
+	Scanner
+	String
+	StringBuilder
+		these classes are created by Java founders itself.
+		we are using them
+
+sun microsystems
+	knows that denominator 0 is wrong.	But in that case, what to do?
+	sun microsystems cannot decide. so they throw Exception.
+	
+
+Error
+Exemption
+
+
+Error vs Exception
+	Errors cannot be handled by try catch technique
+	Exceptions can be handled
+
+try
+{
+}
+catch(IOException ioe)
+{
+}
+catch(Exception ex)
+{
+	//handles any exception
+}
+
+this is not very good practise.
+We need to handle each type of exception accordingly.
+
+-----------------------------------------------
+Object
+	Error
+	Exception
+		IOException
+		InterruptedException
+		RuntimeException
+			all classes derived from RuntimeException are unchecked exceptions
+
+
+Difference between
+	checked		
+	unchecked
+exceptions
+
+Checked exceptions
+	are checked by the compiler
+
+Unchecked exceptions
+	are not checked by the compiler and they are considered at runtime only
+
+No matter, how correctly you do the coding, exceptions still might occur. Due to reasons beyond your program's control. 
+ex:	IOException
+
+network cable is removed
+File is deleted
+memory is insufficient suddenly
+
+
+
+Exceptions may occur at runtime, sometime may not occur.
+why should i handle it always???
+
+IOException
+	occurs during input / output
+	
+you are forced to 
+	handle the exception
+	or
+	use throws clause
+
+Demo:
+------------
+
+public class Bank {
+	public void withdraw(int amount)
+	{
+		if(amount>30000)
+		{
+			throw new NumberFormatException("Amount cannot be > 30k");
+		}else
+		{
+			System.out.println("Remember to collect the cash");
+		}
+	}
+}
+
+
+
+
+
+public class App1 {
+
+	public static void main(String[] args) {
+		 Bank sbi = new Bank();
+		 sbi.withdraw(31000);
+	}
+
+}
+
+
+Exception in thread "main" java.lang.NumberFormatException: Amount cannot be > 30k
+	at Bank.withdraw(Bank.java:7)
+	at App1.main(App1.java:6)
+----------------------------
+in the above example, the NumberFormatException was thrown in the withdraw method
+it was not declared as thrown, it was not handled anywhere. But still the program runs.
+
+Sometimes, it runs successfuly, sometimes, gives error, based on the value <=30 or >30
+
+NumberFormatException is an unchecked exception.
+---------------------------------
+Instead of NumberFormatException, we will use a checked exception called  	IOException
+
+import java.io.IOException;
+
+public class Bank {
+	public void withdraw(int amount)
+	{
+		if(amount>30000)
+		{
+//			throw new NumberFormatException("Amount cannot be > 30k");
+			throw new IOException("Amount is invalid");	//compile error
+			//unhandled exception
+		}else
+		{
+			System.out.println("Remember to collect the cash");
+		}
+	}
+}
+
+
+solution:			//use throws IOException
+import java.io.IOException;
+
+public class Bank {
+	public void withdraw(int amount) throws IOException
+	{
+		if(amount>30000)
+		{
+//			throw new NumberFormatException("Amount cannot be > 30k");			
+			throw new IOException("Amount is invalid");
+		}else
+		{
+			System.out.println("Remember to collect the cash");
+		}
+	}
+}
+
+
+-----------------------------------
+throw vs throws
+	throw is used to throw an exception object
+	throws informs the compiler that these checked exceptions are thrown by the method but does not handle 		them. the calling method is expected to handle them.
+
+
+
+public class App2 {
+
+	public static void main(String[] args) throws IOException  {
+		try{
+			int i=20;
+			int j=0;
+			int k=i/j;
+		}finally
+		{
+			System.out.println("This is finally");
+		}
+		System.out.println("Completed");
+	}
+}
+
+a)	1
+	This is finally
+	Completed
+
+b) 	2
+	This is finally
+	arithmetic exception
+--------------------------------------
+Task:
+Identify few checked exception classes in java
+Identify few unchecked exception classes in java
+
+paste the list in the chat window.
+
+-----------------------------------
+
+Task:
+How can we create an
+	user defined checked exception?
+	user defined unchecked exception?
+
+
+We can create an user defined checked exception by creating a class that extends Exception or its sub class.
+We can create an user defined unchecked exception by creating a class that extends RuntimeException or its sub class.
+
+Task:
+-------
+Create a class Employee with following properties:
+	id
+	firstName
+	lastName
+	salary
+implement the following rules in the setter methods of Employee:
+	id cannot be <=1
+	firstName and lastName cannot be less than 3 characters. It should not contain anything other than 		characters.
+	salary must be a positive number >= 10000
+exception classes related to this should be created:
+	InvalidIdException		must be a checked exception
+	InvalidNameException 	must be an unchecked exception
+	InvalidSalaryException	must be an unchecked exception
+while throwing these exceptions, a meaningful message should be passed. That message should be obtained in the catch block.
