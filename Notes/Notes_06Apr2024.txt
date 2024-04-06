@@ -286,3 +286,89 @@ exception classes related to this should be created:
 while throwing these exceptions, a meaningful message should be passed. That message should be obtained in the catch block.
 
 Create an AppEmployee with main method to test them.
+
+
+
+class Employee {
+	int id;
+	String firstName;
+	String lastName;
+	double salary;
+
+	public void setId(int id) throws InvalidIdException {
+		if (id <= 1) {
+			throw new InvalidIdException("ID is invalid since <= 1");
+		}
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		if (firstName.length() < 3) {
+			throw new InvalidNameException("Size of first name cannot be less then 3 chars");
+		}
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		if (lastName.length() < 3) {
+			throw new InvalidNameException("Size of last name cannot be less then 3 chars");
+		}
+		this.lastName = lastName;
+	}
+
+	public void setSalary(double salary) throws InvalidSalaryException {
+		if (salary < 10000) {
+			throw new InvalidSalaryException("Salary must be a positive number greater than or equal to 10000");
+		}
+		this.salary = salary;
+	}
+
+}
+
+class InvalidIdException extends Exception {
+	public InvalidIdException(String message) {
+		super(message);
+	}
+}
+
+class InvalidNameException extends RuntimeException {
+	public InvalidNameException(String message) {
+		super(message);
+	}
+}
+
+class InvalidSalaryException extends RuntimeException {
+	public InvalidSalaryException(String message) {
+		super(message);
+	}
+}
+
+public class EmployeeApp {
+	public static void main(String[] args) {
+		Employee emp = new Employee();
+		try {
+			emp.setId(0);
+		} catch (InvalidIdException e) {
+			System.out.println("Invalid ID Exception: " + e.getMessage());
+		}
+
+		try {
+			emp.setFirstName("Ravi");
+		} catch (InvalidNameException e) {
+			System.out.println("Invalid Name Exception: " + e.getMessage());
+		}
+
+		try {
+			emp.setLastName("Kumar");
+		} catch (InvalidNameException e) {
+			System.out.println("Invalid Name Exception: " + e.getMessage());
+		}
+
+		try {
+			emp.setSalary(5000);
+		} catch (InvalidSalaryException e) {
+			System.out.println("Invalid Salary Exception: " + e.getMessage());
+		}
+		System.out.println("Continued and completed successfully");
+	}
+}

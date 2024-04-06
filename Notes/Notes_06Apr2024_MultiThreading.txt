@@ -1,0 +1,711 @@
+Live Session: Multithreading and Data I/0(Total length: 2 hours)
+----------------------------------------------------------------------------------------
+IO
+	input output
+apart from
+	keyboard input
+	monitor/screen output
+
+there are many sources of inputs like
+	File
+	Microphone
+	Scanner
+	Camera
+	Joystick
+	Mouse
+	Touchpad
+	GPS
+	Lightpen
+	Barcode reader/ scanner
+and there are many target outputs
+
+how, user provided inputs to computers
+	have changed a long way so far
+
+you are standing in a location
+and requesting for a cab/ bike ride
+	your location is taken as an input
+
+
+if you provide a text box for the user to provide input.		simple way of getting input
+think, how we can make it easier for the user
+and also, enfore some rules
+
+textbox
+date time picker		to pick a date
+drop down list
+radio button
+check box
+similarly there are many ways we can capture input
+
+Input devices
+------------------
+Output devices
+------------------
+Printer
+Monitor
+Speaker
+File
+Projectors
+
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) throws IOException {
+		File f=new File("venkata.txt");
+		f.createNewFile();
+		Scanner sc=new Scanner(f);
+		System.out.println("Enter your name");
+		String name=sc.nextLine();
+		System.out.println("The name is "+name);
+	}
+
+}
+
+
+So far, we have used Scanner to read from keyboard only.
+
+Scanner sc=new Scanner(System.in);
+vs
+
+File f=new File("venkata.txt");
+Scanner sc=new Scanner(f);
+	
+What is a file?
+	is stored in the secondary storage device, permanently.
+
+Storage vs Memory
+	variables, objects are created in memory. They are volatile. They are temporary.
+	files are created in storage devices. They are non-volatile. They are permanent.
+
+If you stop the program and run again, the variables lost their values.
+But files are persistent across running the programs.
+
+If you can represent anything as an object in memory, then you
+can control that anything.
+
+There is a project, there is a printer.
+If you can represent them as objects in memory,
+you can 
+	turn it on/ off
+	increase/ decrease
+	or restart
+	print
+	
+	by calling the methods of those objects
+
+frameworks in java, are introduced to represent something as object in memory
+	ex:
+		hibernate represent tables, rows, as objects and classes
+		spring mvc represent a form (html) as an object
+Why we need File class?
+	file must be represented as an object in memory only then
+	we can do something on the file.
+		create
+		rename
+		delete
+		read/ write
+		get properties	readonly/ size of the file etc
+
+
+what is 2+3
+	5
+what is 9780978908098+9879879087097097?
+	you feel very difficult because if you cannot keep these operands in memory, you cannot do operation.
+	
+if you want to do something in the file 	
+	first represent it as an object in memory.
+	then flush the changes to the storage from the memory.
+
+Why we need File class?
+	if you want to represent a file as an object, then we need a class.
+
+	
+
+File f=new File("D:\\Jag\\UST\\Batch8_Feb2024\\Java\\06-apr-io\\venkata.txt");
+//full qualified path is poor practise. When we ship this code to different computer,
+there may not be a d: drive or the path may become invalid.
+
+relative paths are always recommended.
+when we move the project folder, to another computer, it will start referring from
+the project folder.
+
+---------------------------
+java.io package
+	provides lot of classes to read and write different type of data 
+
+you all said lof of types of files.
+but there only 2 categories of files or input/output sources and destination
+
+character		readers and writers
+binary		input stream and output stream
+
+if you want to read from file as characters,
+	FileReader
+if you want to read from file as bytes,
+	FileInputStream
+
+FileInputStream
+FileOutputStream
+FileReader
+FileWriter
+BufferedReader
+BufferedWriter
+BufferedInputStream
+BufferedOutputStream
+DataInputStream
+DataOutputStream
+ObjectInputStream
+ObjectOutputStream
+
+Buffer
+	read from memory
+	write to memory
+	read specific number of bytes from memory
+	buffering size is 100 bytes
+
+Data
+	primitive data types
+	if you want to read as primitive types		DataInputStream
+	if you want to write primitives			DataOutputStream
+
+Object
+	write objects
+	read objects
+	objects needs to be serialized before writing them to streams
+	implements Serializable
+
+Demo:
+	read all bytes from a file and write them to another file.
+
+	upload / download
+		all bytes from a source file is copied to destination and write to the destination file
+		can be done 1 byte at a time or	entire bytes copied to an array and then
+
+	lets consider an image file (picture). 
+	i am going to read all bytes from that file to an array.
+
+	then create a new file and write all bytes of the array into the new file.
+
+C:\Users\rjaga\Pictures\paratta.jpg
+	this is the source file
+
+kavin.jpg
+	this is the target file
+
+	FileOutputStream or FileWriter are capable of creating the file if it does not exist.
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class App3 {
+
+	public static void main(String[] args) throws IOException {
+		//write the code to read all bytes from C:\Users\rjaga\Pictures\paratta.jpg
+		File f=new File("C:\\Users\\rjaga\\Pictures\\paratta.jpg");
+		int len=(int) f.length();
+		byte []data=new byte[len];
+		
+		//to read bytes from a file, which class i should use?
+		FileInputStream fis=new FileInputStream(f);
+		fis.read(data);
+		//we have read all bytes from the file.
+		fis.close();
+		//-----------------------
+		//lets write these bytes to a new file
+		File f2=new File("raja.jpg");
+		//to write bytes to a file, which class i should use?
+		FileOutputStream fos=new FileOutputStream(f2);
+		fos.write(data);
+		fos.flush();
+		fos.close();
+		System.out.println("Check the file at: "+f2.getAbsolutePath());
+	}
+
+}
+
+-------------------------------------------------------------------
+Lets read 1 byte at a time and write that 1 byte to the target file.
+repeat this in a loop.
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class App4 {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		//write the code to read all bytes from C:\Users\rjaga\Pictures\paratta.jpg
+		File f=new File("C:\\Users\\rjaga\\Pictures\\briyani1.jfif");
+		File f2=new File("chandra.jfif");
+		FileInputStream fis=new FileInputStream(f);
+		FileOutputStream fos=new FileOutputStream(f2);
+		int data=-1;
+		while((data=fis.read())!=-1)
+		{
+			fos.write(data);
+			fos.flush();
+			Thread.sleep(10);
+		}
+		System.out.println("Done");
+	}
+
+}
+----------------------------------------------------
+Suppose, i want to store employee object in a file.
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class App7 {
+
+	public static void main(String[] args) throws IOException{
+		Employee employee=new Employee();
+		employee.setId(111);
+		employee.setName("Raja siva kumar");
+		employee.setSalary(1212121.10f);
+		
+		File f=new File("employee.dat");
+		ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(f));
+		oos.writeObject(employee);
+		oos.flush();
+		oos.close();
+	}
+
+}
+
+
+Exception in thread "main" java.io.NotSerializableException: Employee
+	at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1187)
+	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:350)
+	at App7.main(App7.java:16)
+
+
+Solution:
+	employee class should implement Serializable
+
+public class Employee implements Serializable{}
+
+Serializable is a marker interface, we dont have to override anything for this.
+
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class App8 {
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException{
+		ObjectInputStream ois=new ObjectInputStream(new FileInputStream("employee.dat"));
+		Employee emp= (Employee) ois.readObject();
+		System.out.println(emp);
+	}
+
+}
+
+---------------------------------
+Thread vs Process
+-------------------------
+What is a process?
+	Running instance of a program is called as a process.
+if you see task manager,
+	it also shows the processes running in our cpu.
+
+CPU goes to every process and spends some time in a round
+for a second, 2.8GHz means
+	2.8*1024*1024*104 rounds
+or a round takes
+	1/2.8*1024*1024*104 seconds
+
+considering this, 
+	if a process is waiting for user input,
+	then the time spent by the cpu is not utilized
+
+CPU utilization is 0
+
+if a process contains multiple threads, example 2 threads
+	CPU performs 1 then
+CPU utilization is 50%
+
+3 threads, 1 is waiting user input
+	CPU performs 2 then
+CPU utilization is 66%
+
+4 threads
+	75%
+
+0
+50
+75
+66
+
+when we add multiple threads, it initially improves the performance significantly, but more does not mean better.
+
+Performance
+	effective utilization of resources
+	
+Resources
+	time 
+	memory
+
+Any process contains atleast 1 thread.
+
+A program that has main method, has a main thread.
+	if main is not there, we cannot run the program, so it is not a process. 
+
+without atleast 1 thread, there cannot be any process.
+
+what is multi threading?
+	if you create child threads, then it is a multi threaded process.
+main being the main thread, all other threads are child threads.
+
+How can we create threads??????
+	Thread class is used to create threads.
+	A sub class of a Thread class is also a thread.
+
+Without using Thread or its sub class, can we create a Thread????????
+
+
+class One implements Runnable
+{
+
+	@Override
+	public void run() {
+		for(int i=0;i<10;i++)
+		{
+			System.out.println(i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+
+class Two implements Runnable
+{
+
+	@Override
+	public void run() {
+		for(int i=1000;i<1010;i++)
+		{
+			System.out.println(i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+public class App {
+
+	public static void main(String[] args) {
+		Thread t1=new Thread(new One());
+		Thread t2=new Thread(new Two());
+		
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+
+
+
+
+
+-----------------------------------------------------------------
+class Even extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("Even");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class Odd extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("Odd");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+public class App2 {
+
+	public static void main(String[] args) {
+		Even t1=new Even();
+		Odd t2=new Odd();
+		t1.start();
+		t2.start();
+	}
+
+}
+
+
+------------------------------
+Threads allow us to run multiple methods in asynchronous fashion.
+
+Life cycle of a thread:
+	New Thread state		when a thread is created
+	Runnable state		when the thread's start method is called
+				continues to be in runnable state, until
+					work is completed	-	dead
+					aborted		-	dead
+					sleep		-	not runnable state for  time
+					wait		-	not runnable state
+					join		-	not runnable state
+					notify		-	runnable state
+					yield		-	runnable state
+	Not runnable state
+	Dead state
+
+Top of the giant wheel is like the owner of the monitor.
+
+When CPU comes to a process,
+	there are lot threads,
+		but the CPU performs the work in the thread which is the owner of the monitor.
+	then CPU moves arbitrarily to next thread. next thread has become the owner of the monitor.
+
+	not runnable threads will not be the owner of monitor, their works are not done by the cpu.
+
+sleep
+wait
+if you assign null to a thread, it wil die.
+if the process is killed, "End Task", then all threads die
+
+
+What is thread synchronization?
+	sync means, one by one
+	threads are allowed to run one by one = thread synchronization
+	thread synchronization means, no two threads can access a shared resource at a time
+
+The program normally runs in synchronous mode. 
+We introduce multiple threads to run in asynchronous mode. Then we do thread synchronization.
+sync -> async -> sync 	WHY?
+
+in airport, everybody is independent. 
+But when they enter security check, they are allow to enter one by one only. 
+After that, again they are independent.
+
+Similarly, the threads are allowed to run parallely.
+But while accessing a shared resource, we may want the threads to access one thread at a time.
+
+
+class First extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("First");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class Second extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<5;i++)
+		{
+			System.out.println("Second");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class Third extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("Third");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+public class App3 {
+
+	public static void main(String[] args) throws InterruptedException {
+		First t1=new First();
+		Second t2=new Second();
+		Third t3=new Third();
+		
+		t1.start();
+		t2.start();
+		t2.join(); //whoever have already started, can continue. but others wait
+		t3.start();
+		
+	}
+
+}
+
+
+------------------------------
+synchronized method
+synchronized block
+
+
+
+class MyThread extends Thread
+{
+	Counter counter;
+	public MyThread(Counter counter)
+	{
+		this.counter=counter;
+	}
+	public void run()
+	{
+		try {
+			counter.display();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+class Counter
+{
+	public synchronized void display() throws InterruptedException
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+": "+i);
+			Thread.sleep(1000);
+		}
+	}
+}
+
+public class App4 {
+
+	public static void main(String[] args) {
+		Counter counter1=new Counter();
+		Counter counter2=new Counter();
+		MyThread t1=new MyThread(counter1);
+		t1.setName("Jag");
+		MyThread t2=new MyThread(counter1);
+		t2.setName("Dinesh");
+		
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+
+
+
+
+========================================
+class MyThread extends Thread
+{
+	Counter counter;
+	public MyThread(Counter counter)
+	{
+		this.counter=counter;
+	}
+	public void run()
+	{
+		try {
+			counter.display();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+class Counter
+{
+	public void display() throws InterruptedException
+	{
+		System.out.println(Thread.currentThread().getName()+" has entered the display method");
+
+		synchronized (this) {
+			for(int i=0;i<10;i++)
+			{
+				System.out.println(Thread.currentThread().getName()+": "+i);
+				Thread.sleep(1000);
+			}
+		}
+		
+		System.out.println(Thread.currentThread().getName()+" has exited the display method");
+
+	}
+}
+
+public class App4 {
+
+	public static void main(String[] args) {
+		Counter counter1=new Counter();
+		Counter counter2=new Counter();
+		MyThread t1=new MyThread(counter1);
+		t1.setName("Jag");
+		MyThread t2=new MyThread(counter1);
+		t2.setName("Dinesh");
+		
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+
+
+-----------------
+Synchronized block or Synchronized method
+makes other threads to wait, when 1 thread has already entered.
+
+Imagine, if 1 thread is waiting for the lock to be released by another thread. If that another thread is waiting for this thread to release, this is deadlock. 
+
