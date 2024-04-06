@@ -275,7 +275,7 @@ Create a class Employee with following properties:
 	firstName
 	lastName
 	salary
-implement the following rules in the setter methods of Employee:
+implement the following rules in the constructors and setter methods of Employee:
 	id cannot be <=1
 	firstName and lastName cannot be less than 3 characters. It should not contain anything other than 		characters.
 	salary must be a positive number >= 10000
