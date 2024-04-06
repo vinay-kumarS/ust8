@@ -284,3 +284,5 @@ exception classes related to this should be created:
 	InvalidNameException 	must be an unchecked exception
 	InvalidSalaryException	must be an unchecked exception
 while throwing these exceptions, a meaningful message should be passed. That message should be obtained in the catch block.
+
+Create an AppEmployee with main method to test them.
